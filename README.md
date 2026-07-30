@@ -94,6 +94,3 @@ Este projeto está sob licença MIT — veja o arquivo `LICENSE` (se aplicável)
 
 Para dúvidas ou colaboração: abra uma issue ou contate o mantenedor do repositório.
 
----
-
-Se quiser, eu adapto o README com mais detalhes (comandos npm, testes, screenshots, etc.).
