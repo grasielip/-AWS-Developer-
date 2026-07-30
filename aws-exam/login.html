@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - AWS Exam Pro</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="login-page">
+      <div class="card login-card">
+        <h2>Login</h2>
+        <form id="login-form" class="login-form">
+          <label>
+            Usuário
+            <input id="username" type="text" placeholder="Digite seu usuário" autocomplete="username" />
+          </label>
+          <button id="login-button" class="primary-btn" type="submit">Entrar</button>
+        </form>
+      </div>
+    </main>
+
+    <script>
+      const USER_STORAGE_KEY = 'awsExam_currentUser';
+      const storedUser = localStorage.getItem(USER_STORAGE_KEY);
+      if (storedUser) {
+        window.location.href = 'index.html';
+      }
+
+      const loginForm = document.getElementById('login-form');
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        if (!username) return;
+        localStorage.setItem(USER_STORAGE_KEY, username);
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+</html>

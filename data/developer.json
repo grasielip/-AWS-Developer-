@@ -1,0 +1,2848 @@
+[
+  {
+    "id": 1,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Por que é recomendado habilitar MFA (Multi-Factor Authentication) no usuário-raiz da AWS mesmo antes de iniciar testes no console?",
+    "alternativas": [
+      "Não há qualquer necessidade de MFA em cenários de teste, pois é gratuito.",
+      "Exige compra antecipada de hardware compatível com MFA.",
+      "O usuário-raiz nunca precisa de senha, tornando MFA desnecessário.",
+      "Garante maior segurança, pois esse usuário possui permissões irrestritas na conta AWS, evitando riscos em caso de vazamento de credenciais."
+    ],
+    "resposta": 3,
+    "explicacao": "O usuário-raiz da AWS tem privilégios absolutos na conta. Habilitar MFA adiciona uma camada extra de proteção crucial contra acessos não autorizados.",
+    "referencias": [
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html"
+    ]
+  },
+  {
+    "id": 2,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma equipe deseja expor uma API REST que permita registrar pedidos e acione uma função Lambda para processá-los. Eles decidem usar o Amazon API Gateway com integração aws_proxy. Qual das opções representa uma vantagem dessa abordagem?",
+    "alternativas": [
+      "Garante que a API seja executada apenas em ambientes locais.",
+      "Facilita o roteamento direto da requisição ao Lambda com mínima configuração.",
+      "Remove a necessidade de autenticação e gerenciamento de tráfego.",
+      "Permite executar a função Lambda localmente sem precisar configurar endpoints."
+    ],
+    "resposta": 1,
+    "explicacao": "A integração aws_proxy do API Gateway repassa o payload completo da requisição diretamente para a função Lambda de maneira simples.",
+    "referencias": [
+      "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html"
+    ]
+  },
+  {
+    "id": 3,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Uma organização precisa que os logs armazenados no Amazon CloudWatch Logs sejam criptografados em repost utilizando uma chave simétrica gerenciada pelo cliente no AWS KMS. Qual ação deve ser realizada no grupo de logs existente?",
+    "alternativas": [
+      "Excluir o grupo de logs atual e recriar pelo console.",
+      "Modificar o grupo de logs existente utilizando a AWS CLI e associar a chave simétrica gerenciada pelo cliente.",
+      "Configurar o redirecionamento dos logs para o S3.",
+      "Atualizar a política de IAM do grupo de logs."
+    ],
+    "resposta": 1,
+    "explicacao": "É possível associar uma chave KMS simétrica a um grupo de logs existente utilizando a AWS CLI através do comando aws logs associate-kms-key.",
+    "referencias": [
+      "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/encrypt-log-data-kms.html"
+    ]
+  },
+  {
+    "id": 4,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Para otimizar a performance de uma função AWS Lambda que se conecta a um banco de dados relacional (RDS), qual das seguintes práticas é recomendada para reduzir a latência de conexões?",
+    "alternativas": [
+      "Aumentar a memória alocada para a função.",
+      "Criar uma nova conexão dentro do handler a cada invocação.",
+      "Inicializar a conexão com o banco de dados fora do handler da função (no escopo global).",
+      "Usar conexões de curta duração e fechá-las após cada consulta."
+    ],
+    "resposta": 2,
+    "explicacao": "Inicializar a conexão fora do handler permite que ela seja mantida no contexto de execução 'quente' e reutilizada em invocações subsequentes.",
+    "referencias": [
+      "https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html"
+    ]
+  },
+  {
+    "id": 5,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Difícil",
+    "pergunta": "Qual arquivo de configuração é essencial no AWS CodeBuild para conter os comandos de compilação, testes e empacotamento da aplicação?",
+    "alternativas": [
+      "template.yaml",
+      "appspec.yml",
+      "buildspec.yml",
+      "samconfig.toml"
+    ],
+    "resposta": 2,
+    "explicacao": "O arquivo buildspec.yml é o manifesto lido nativamente pelo AWS CodeBuild para executar as etapas de construção da aplicação.",
+    "referencias": [
+      "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html"
+    ]
+  },
+  {
+    "id": 6,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Quais são as características do Console da AWS?",
+    "alternativas": [
+      "Baseada apenas em linha de comando e scripts de automação.",
+      "Uma interface point-and-click que agrega serviços, estimativas de custos e facilita a descoberta de ferramentas.",
+      "Exclusivo para monitoramento, sem permitir criação ou exclusão de recursos.",
+      "Não oferece informações sobre custos ou uso, exigindo ferramentas externas."
+    ],
+    "resposta": 1,
+    "explicacao": "O Console da AWS é uma interface web point-and-click que centraliza o acesso aos serviços, oferece uma visão geral de custos e uso, e facilita a exploração de novos recursos.",
+    "referencias": []
+  },
+  {
+    "id": 7,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual das alternativas melhor define a relação entre uma Região e uma Zona de Disponibilidade (AZ) na AWS?",
+    "alternativas": [
+      "AZ é um local geográfico completo, e a Região é apenas uma subdivisão lógica.",
+      "Uma Região é composta por uma ou mais AZs, onde cada AZ inclui um ou mais data centers fisicamente separados.",
+      "Cada Região é um data center isolado e cada AZ é apenas um link de rede entre Regiões.",
+      "A Região é sempre próxima de um grande centro urbano, e a AZ é um data center dentro da mesma cidade."
+    ],
+    "resposta": 1,
+    "explicacao": "No modelo AWS, cada Região agrupa diversas Zonas de Disponibilidade, e cada AZ contém data centers fisicamente isolados, permitindo maior disponibilidade e tolerância a falhas.",
+    "referencias": []
+  },
+  {
+    "id": 8,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual o objetivo dos Locais de Borda (Edge Locations) na AWS?",
+    "alternativas": [
+      "Hospedar aplicações de longa duração em contêineres gerenciados pelo cliente.",
+      "Servir apenas para backups automáticos de bancos de dados RDS.",
+      "Armazenar em cache conteúdo e realizar entregas de dados com menor latência via CDN.",
+      "Servir como pontos regionais de administração de hypervisors."
+    ],
+    "resposta": 2,
+    "explicacao": "Os Edge Locations são usados para armazenar conteúdo em cache e distribuí-lo via CDN, garantindo baixa latência para usuários finais.",
+    "referencias": []
+  },
+  {
+    "id": 9,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "No modelo de responsabilidade compartilhada, qual opção reflete corretamente o papel do cliente?",
+    "alternativas": [
+      "Manter todo o hardware de data center e hipervisores.",
+      "Configurar os serviços que usa, definir acesso lógico e criptografar dados.",
+      "Delegar segurança em todos os níveis para a AWS, sem qualquer personalização.",
+      "Somente monitorar métricas de desempenho, sem necessidade de gerenciar permissões."
+    ],
+    "resposta": 1,
+    "explicacao": "O cliente deve proteger e gerenciar o que está dentro da nuvem, configurando serviços, controles de acesso e criptografia, enquanto a AWS protege a infraestrutura.",
+    "referencias": []
+  },
+  {
+    "id": 10,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Por que a AWS é uma boa escolha para uma organização que quer expandir internacionalmente e precisar de uma ampla gama de serviços?",
+    "alternativas": [
+      "Apenas serviços de armazenamento em bloco para servidores locais.",
+      "Uma plataforma limitada a contêineres e machine learning.",
+      "Um catálogo amplo de serviços e alcance global.",
+      "Uma infraestrutura de data centers única, sem possibilidade de escalabilidade."
+    ],
+    "resposta": 2,
+    "explicacao": "A AWS oferece um catálogo amplo de serviços e uma infraestrutura global que permite implantar aplicações em múltiplas regiões com baixa latência e escalabilidade.",
+    "referencias": []
+  },
+  {
+    "id": 11,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual é uma vantagem direta de ter capacidade elástica na nuvem para lidar com variações de tráfego?",
+    "alternativas": [
+      "Substituir completamente a equipe de TI, reduzindo custos de pessoal.",
+      "Garantir que a aplicação permaneça sempre online, mesmo sem monitoramento ou alarmes.",
+      "Ajustar recursos em poucos minutos, pagando apenas pelo uso efetivo.",
+      "Desligar todos os servidores físicos em data centers para migrar 100% das operações à nuvem."
+    ],
+    "resposta": 2,
+    "explicacao": "A capacidade elástica permite aumentar ou reduzir recursos rapidamente e pagar somente pelo uso efetivo, otimizando custos e performance.",
+    "referencias": []
+  },
+  {
+    "id": 12,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual é a abordagem da AWS em relação aos custos iniciais ao iniciar um projeto na nuvem?",
+    "alternativas": [
+      "Igual, pois a AWS exige a compra antecipada de licenças e hardware.",
+      "Drasticamente reduzido, já que se paga somente pelos recursos usados ao iniciar o projeto.",
+      "Invariavelmente maior, pois tudo é cobrado ao mesmo tempo.",
+      "Relevante apenas para aplicações de grande porte."
+    ],
+    "resposta": 1,
+    "explicacao": "Na AWS, não há necessidade de comprar hardware ou manter data centers próprios, reduzindo radicalmente os custos iniciais e permitindo pay-as-you-go.",
+    "referencias": []
+  },
+  {
+    "id": 13,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "O que caracteriza o isolamento de falhas em uma aplicação?",
+    "alternativas": [
+      "Disponibilizar apenas um servidor para todo o sistema.",
+      "Conectar todos os componentes em uma única rede para simplificar a comunicação.",
+      "Separar componentes críticos para que a falha de um não interrompa todo o sistema.",
+      "Usar sempre a mesma AZ para assegurar consistência entre dados."
+    ],
+    "resposta": 2,
+    "explicacao": "Isolar componentes críticos permite que uma falha em uma parte não derrube todo o sistema, aumentando disponibilidade e resiliência.",
+    "referencias": []
+  },
+  {
+    "id": 14,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual abordagem é mais adequada para restringir o acesso a objetos S3 com base em um atributo department do usuário Cognito?",
+    "alternativas": [
+      "Definir regras de bucket no S3 que restrinjam o acesso com base em prefixos relacionados aos departamentos.",
+      "Implementar uma função Lambda para filtrar os acessos aos objetos do S3 de acordo com o atributo department.",
+      "Configurar perfis do IAM no pool de identidades do Cognito com políticas que comparem a tag do objeto com o atributo do usuário.",
+      "Criar diferentes grupos de usuários no Cognito para cada departamento e associar roles do IAM específicas."
+    ],
+    "resposta": 2,
+    "explicacao": "A política do IAM no Cognito pode comparar a tag s3/department do objeto com o atributo de usuário, permitindo acesso apenas quando os valores coincidirem.",
+    "referencias": []
+  },
+  {
+    "id": 15,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS permite implantar rapidamente uma aplicação web em Python sem se preocupar com configuração de servidores, load balancer ou auto scaling?",
+    "alternativas": [
+      "AWS Elastic Beanstalk, que automatiza o provisionamento e o deploy da aplicação.",
+      "Amazon EC2, com configuração manual de instâncias e escalabilidade.",
+      "AWS Lambda, para executar funções sem gerenciar servidores.",
+      "AWS CloudFormation, para definir toda a infraestrutura como código."
+    ],
+    "resposta": 0,
+    "explicacao": "O Elastic Beanstalk automatiza a criação e gerenciamento da infraestrutura necessária, permitindo que o desenvolvedor foque no código.",
+    "referencias": []
+  },
+  {
+    "id": 16,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual é uma das principais vantagens de migrar para uma arquitetura de microsserviços usando Amazon SQS para comunicação entre serviços?",
+    "alternativas": [
+      "Centraliza o controle de erros e logs em uma única instância.",
+      "Permite que cada serviço seja escalado e atualizado de forma independente.",
+      "Reduz o custo total da aplicação ao consolidar todos os serviços em um único ponto de entrada.",
+      "Garante que todos os serviços compartilhem o mesmo banco de dados e dependências."
+    ],
+    "resposta": 1,
+    "explicacao": "Microsserviços permitem que cada serviço seja escalado e atualizado independentemente, aumentando flexibilidade e reduzindo impacto entre componentes.",
+    "referencias": []
+  },
+  {
+    "id": 17,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual mecanismo garante que a operação PutItem no DynamoDB seja idempotente e evite registros duplicados?",
+    "alternativas": [
+      "Adicionar um timestamp único em cada requisição para permitir inserções duplicadas.",
+      "Incluir uma expressão de condição como attribute_not_exists na operação de gravação.",
+      "Usar a opção overwrite=True para garantir que os dados antigos sejam substituídos.",
+      "Ativar o versionamento no DynamoDB para armazenar múltiplas versões da mesma transação."
+    ],
+    "resposta": 1,
+    "explicacao": "A condição attribute_not_exists garante que o item só seja gravado se ainda não existir, evitando duplicações em reexecuções.",
+    "referencias": []
+  },
+  {
+    "id": 18,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual é a vantagem de usar uma fila Amazon SQS para enviar confirmações de pedido em vez de enviar o e-mail diretamente no fluxo de compra?",
+    "alternativas": [
+      "Elimina a necessidade de autenticação e segurança no envio de mensagens.",
+      "Reduz a necessidade de monitoramento e logging do sistema.",
+      "Permite desacoplar o processamento da confirmação e melhorar a escalabilidade.",
+      "Garante que o e-mail será entregue antes da confirmação da compra."
+    ],
+    "resposta": 2,
+    "explicacao": "Usar SQS desacopla o envio de e-mails do fluxo principal, permitindo melhor escalabilidade e tratamento independente de falhas.",
+    "referencias": []
+  },
+  {
+    "id": 19,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual abordagem event-driven é mais indicada para redimensionar imagens automaticamente quando um arquivo é enviado para um bucket S3?",
+    "alternativas": [
+      "Integrar o S3 com o Amazon EC2 para processar os arquivos por meio de um servidor dedicado.",
+      "Usar um script Python local que monitore o bucket e acione o redimensionamento quando necessário.",
+      "Configurar o bucket do S3 para disparar uma função Lambda automaticamente ao detectar o envio de um novo arquivo.",
+      "Criar um cron job que verifique periodicamente o bucket do S3 e execute uma função Lambda caso encontre novos arquivos."
+    ],
+    "resposta": 2,
+    "explicacao": "Configurar notificações de eventos do S3 para acionar uma Lambda permite processar arquivos automaticamente e em escala sem verificação manual.",
+    "referencias": []
+  },
+  {
+    "id": 20,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Para reduzir a latência do cold start em funções Lambda que se conectam a bancos de dados, qual prática é recomendada?",
+    "alternativas": [
+      "Fechar imediatamente a conexão após cada operação.",
+      "Inicializar a conexão com o banco de dados fora do handler.",
+      "Estabelecer a conexão somente após confirmar que a função está quente.",
+      "Inicializar a conexão dentro do handler a cada invocação."
+    ],
+    "resposta": 1,
+    "explicacao": "Inicializar a conexão fora do handler permite reutilizá-la em invocações subsequentes, reduzindo a latência do cold start.",
+    "referencias": []
+  },
+  {
+    "id": 21,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual prática é fundamental ao utilizar o Boto3 para garantir que as operações sejam seguras e consistentes?",
+    "alternativas": [
+      "Codificar as credenciais diretamente no código para facilitar o acesso.",
+      "Ignorar o tratamento de exceções para simplificar o fluxo da aplicação.",
+      "Configurar a sessão especificando explicitamente a região e as credenciais apropriadas.",
+      "Depender apenas das configurações padrão, sem especificar a região."
+    ],
+    "resposta": 2,
+    "explicacao": "Configurar a sessão com região e credenciais corretas garante que as operações sejam autenticadas e direcionadas aos recursos certos.",
+    "referencias": []
+  },
+  {
+    "id": 22,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS é mais indicado para distribuir notificações a múltiplos endpoints (e-mail, SMS, HTTP)?",
+    "alternativas": [
+      "Amazon SQS, pois permite a entrega única de mensagens.",
+      "Amazon API Gateway, para expor endpoints de notificação.",
+      "Não utilizar AWS Lambda, pois não suporta notificações diretas.",
+      "Amazon SNS, pois publica mensagens para múltiplos assinantes simultaneamente."
+    ],
+    "resposta": 3,
+    "explicacao": "O Amazon SNS publica mensagens para múltiplos assinantes simultaneamente, suportando diversos protocolos de entrega.",
+    "referencias": []
+  },
+  {
+    "id": 23,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual alteração reduzirá a duração do runtime de uma função Lambda intensiva em CPU?",
+    "alternativas": [
+      "Configurar a função com um valor de memória maior.",
+      "Configurar Provisioned Concurrency para a função Lambda.",
+      "Aumentar o timeout da função Lambda.",
+      "Dividir a função em múltiplas funções menores."
+    ],
+    "resposta": 0,
+    "explicacao": "Aumentar a memória provisionada também aumenta a CPU alocada à função Lambda, reduzindo o tempo de execução.",
+    "referencias": []
+  },
+  {
+    "id": 24,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual abordagem garante que alterações no código Lambda não impactem o ambiente de produção e permita rollback rápido?",
+    "alternativas": [
+      "Manter múltiplas funções Lambda para cada ambiente sem o uso de aliases ou variáveis de estágio.",
+      "Publicar versões imutáveis da função e criar aliases que apontem para a versão estável.",
+      "Alterar diretamente o código da função em produção sem utilizar versionamento.",
+      "Utilizar um único deploy sem gerenciamento de versões."
+    ],
+    "resposta": 1,
+    "explicacao": "Publicar versões imutáveis e usar aliases permite direcionar o tráfego para a versão estável e fazer rollback rápido se necessário.",
+    "referencias": []
+  },
+  {
+    "id": 25,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual solução permite adicionar funcionalidade customizada a lances em uma tabela DynamoDB sem alterar o código do aplicativo de terceiros?",
+    "alternativas": [
+      "Configurar o DynamoDB Streams e criar uma função Lambda acionada pelo stream.",
+      "Criar um aplicativo que consulte periodicamente a tabela do DynamoDB em um container ECS.",
+      "Criar um aplicativo que consulte periodicamente a tabela em uma instância EC2.",
+      "Configurar um stream do Kinesis Data Firehose para ler alterações da tabela."
+    ],
+    "resposta": 0,
+    "explicacao": "DynamoDB Streams permite acionar uma Lambda em tempo real quando a tabela muda, adicionando funcionalidades sem alterar o aplicativo de terceiros.",
+    "referencias": []
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual é a principal vantagem de usar serviços gerenciados da AWS em vez de gerenciar infraestrutura própria?",
+    "alternativas": [
+      "Permite customizar hardware físico em cada data center.",
+      "Diminui a necessidade de gerenciamento operacional e aumenta a velocidade de implantação.",
+      "Exige compra antecipada de licenças para todos os recursos.",
+      "Garante que o código seja executado apenas em ambientes locais."
+    ],
+    "resposta": 1,
+    "explicacao": "Serviços gerenciados AWS reduzem o trabalho operacional, permitindo focar no desenvolvimento e acelerar o time-to-market.",
+    "referencias": [],
+    "id": 26
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual elemento é usado para rotas de DNS globalmente na AWS?",
+    "alternativas": [
+      "Amazon VPC",
+      "Amazon CloudFront",
+      "Amazon Route 53",
+      "AWS IAM"
+    ],
+    "resposta": 2,
+    "explicacao": "O Amazon Route 53 é o serviço de DNS gerenciado da AWS, usado para roteamento de nomes e resolução de domínios.",
+    "referencias": [
+      "https://aws.amazon.com/route53/"
+    ],
+    "id": 27
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "O que significa “pay-as-you-go” na nuvem AWS?",
+    "alternativas": [
+      "Pagar uma assinatura fixa mesmo sem usar os serviços.",
+      "Pagar apenas pelos recursos que você realmente utiliza.",
+      "Pagar antecipadamente por um ano inteiro.",
+      "Pagar uma multa por cada hora que não usa recursos."
+    ],
+    "resposta": 1,
+    "explicacao": "“Pay-as-you-go” significa pagar somente pelos recursos consumidos, sem investimento em infraestrutura ociosa.",
+    "referencias": [],
+    "id": 28
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual serviço AWS é ideal para armazenar objetos como imagens, vídeos e backups?",
+    "alternativas": [
+      "Amazon EC2",
+      "Amazon RDS",
+      "Amazon S3",
+      "Amazon EBS"
+    ],
+    "resposta": 2,
+    "explicacao": "O Amazon S3 é a solução de armazenamento de objetos da AWS, ideal para arquivos, backups e conteúdo estático.",
+    "referencias": [
+      "https://aws.amazon.com/s3/"
+    ],
+    "id": 29
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço da AWS oferece um banco de dados de chave-valor totalmente gerenciado?",
+    "alternativas": [
+      "Amazon Aurora",
+      "Amazon DynamoDB",
+      "Amazon Redshift",
+      "Amazon Athena"
+    ],
+    "resposta": 1,
+    "explicacao": "O Amazon DynamoDB é um banco de dados NoSQL gerenciado, ideal para aplicações de baixa latência com chave-valor e documentos.",
+    "referencias": [
+      "https://aws.amazon.com/dynamodb/"
+    ],
+    "id": 30
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual modelo de implantação da AWS usa instâncias pré-provisionadas e cobrança por segundo?",
+    "alternativas": [
+      "Instâncias reservadas",
+      "Instâncias spot",
+      "Instâncias sob demanda",
+      "Instâncias dedicadas"
+    ],
+    "resposta": 2,
+    "explicacao": "Instâncias sob demanda permitem iniciar recursos quando necessário e pagar por segundo de uso, sem compromisso de longo prazo.",
+    "referencias": [],
+    "id": 31
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual conceito da AWS garante que recursos em diferentes AZs continuem disponíveis mesmo se uma AZ falhar?",
+    "alternativas": [
+      "Elasticidade",
+      "Tolerância a falhas",
+      "Escalabilidade vertical",
+      "Preço sob demanda"
+    ],
+    "resposta": 1,
+    "explicacao": "Tolerância a falhas é o design que distribui recursos em múltiplas AZs para manter disponibilidade durante falhas isoladas.",
+    "referencias": [],
+    "id": 32
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS é usado para criar redes virtuais isoladas dentro da nuvem?",
+    "alternativas": [
+      "Amazon VPC",
+      "AWS CloudTrail",
+      "Amazon S3",
+      "AWS IAM"
+    ],
+    "resposta": 0,
+    "explicacao": "O Amazon VPC permite criar redes virtuais isoladas na AWS, com controle de sub-redes, roteadores e firewalls.",
+    "referencias": [
+      "https://aws.amazon.com/vpc/"
+    ],
+    "id": 33
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS permite distribuir conteúdo globalmente com baixa latência?",
+    "alternativas": [
+      "AWS WAF",
+      "AWS CloudTrail",
+      "Amazon CloudFront",
+      "AWS Glue"
+    ],
+    "resposta": 2,
+    "explicacao": "Amazon CloudFront é a CDN da AWS, usada para distribuir conteúdo e reduzir latência para usuários globais.",
+    "referencias": [
+      "https://aws.amazon.com/cloudfront/"
+    ],
+    "id": 34
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS permite executar contêineres sem gerenciar servidores?",
+    "alternativas": [
+      "Amazon Lightsail",
+      "AWS Fargate",
+      "Amazon EKS",
+      "AWS Batch"
+    ],
+    "resposta": 1,
+    "explicacao": "O AWS Fargate permite executar contêineres sem provisionar ou gerenciar infraestrutura de servidor.",
+    "referencias": [
+      "https://aws.amazon.com/fargate/"
+    ],
+    "id": 35
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Ao construir uma API REST com API Gateway e Lambda, qual formato de integração é recomendado para receber o payload HTTP completo?",
+    "alternativas": [
+      "Lambda custom integration",
+      "HTTP proxy integration",
+      "AWS_PROXY (lambda proxy integration)",
+      "Mock integration"
+    ],
+    "resposta": 2,
+    "explicacao": "AWS_PROXY permite que o Lambda receba o payload HTTP completo, incluindo cabeçalhos e corpo, reduzindo a necessidade de mapeamento adicional.",
+    "referencias": [],
+    "id": 36
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual prática é recomendada para evitar configurações sensíveis no código de aplicações AWS?",
+    "alternativas": [
+      "Incluir segredos diretamente no código fonte.",
+      "Usar variáveis de ambiente ou AWS Secrets Manager.",
+      "Salvar credenciais em arquivos temporários dentro do container.",
+      "Enviar segredos por e-mail para a equipe de deploy."
+    ],
+    "resposta": 1,
+    "explicacao": "Segredos devem ser mantidos fora do código e gerenciados por serviços de gestão de segredos ou variáveis de ambiente seguras.",
+    "referencias": [
+      "https://aws.amazon.com/secrets-manager/"
+    ],
+    "id": 37
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual recurso do AWS Lambda ajuda a reduzir a latência de cold start?",
+    "alternativas": [
+      "Provisioned Concurrency",
+      "Reserved Instances",
+      "Elastic IP",
+      "Auto Scaling Groups"
+    ],
+    "resposta": 0,
+    "explicacao": "Provisioned Concurrency mantém instâncias da Lambda prontas para execução, reduzindo a latência do cold start.",
+    "referencias": [],
+    "id": 38
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço é melhor para armazenar configurações estruturadas usadas por aplicações AWS?",
+    "alternativas": [
+      "AWS Systems Manager Parameter Store",
+      "AWS Config",
+      "Amazon Kinesis",
+      "AWS Glue"
+    ],
+    "resposta": 0,
+    "explicacao": "O Parameter Store permite armazenar configurações e segredos de forma centralizada e segura para aplicações.",
+    "referencias": [
+      "https://aws.amazon.com/systems-manager/features/#Parameter_Store"
+    ],
+    "id": 39
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Ao usar Amazon SQS, qual característica ajuda a processar mensagens em ordem garantida?",
+    "alternativas": [
+      "Fila padrão sem ordem garantida",
+      "Fila FIFO com deduplicação",
+      "Fila DLQ (dead-letter queue)",
+      "FILA SNS"
+    ],
+    "resposta": 1,
+    "explicacao": "As filas FIFO do SQS preservam a ordem das mensagens e suportam deduplicação para processamentos ordenados.",
+    "referencias": [],
+    "id": 40
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço é ideal para criar APIs GraphQL gerenciadas pela AWS?",
+    "alternativas": [
+      "Amazon API Gateway Rest API",
+      "AWS AppSync",
+      "AWS Elastic Beanstalk",
+      "Amazon Kinesis Data Streams"
+    ],
+    "resposta": 1,
+    "explicacao": "O AWS AppSync fornece APIs GraphQL gerenciadas, com integração nativa a DynamoDB, Lambda e outras fontes de dados.",
+    "referencias": [
+      "https://aws.amazon.com/appsync/"
+    ],
+    "id": 41
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço permite orquestrar a execução de etapas de back-end em fluxo de trabalho sem servidor?",
+    "alternativas": [
+      "AWS Step Functions",
+      "AWS CodePipeline",
+      "Amazon Kinesis",
+      "AWS Batch"
+    ],
+    "resposta": 0,
+    "explicacao": "AWS Step Functions orquestra workflows serverless entre Lambda, ECS e outros serviços usando estados e transições.",
+    "referencias": [],
+    "id": 42
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual padrão de arquitetura é mais indicado para processar eventos com Lambda e Kinesis?",
+    "alternativas": [
+      "Batch processando arquivos localmente",
+      "Event-driven, onde eventos Kinesis acionam funções Lambda.",
+      "Aplicação monolítica que lê o Kinesis a cada hora.",
+      "Usar roteadores EC2 para gerenciar todo o tráfego de eventos."
+    ],
+    "resposta": 1,
+    "explicacao": "Arquiteturas event-driven permitem processar fluxos Kinesis em tempo real usando Lambda como consumidor escalável.",
+    "referencias": [],
+    "id": 43
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço de banco de dados é mais indicado para armazenar sessões de usuário com baixa latência?",
+    "alternativas": [
+      "Amazon ElastiCache",
+      "Amazon Redshift",
+      "AWS Glue",
+      "Amazon Athena"
+    ],
+    "resposta": 0,
+    "explicacao": "Amazon ElastiCache fornece cache em memória de baixa latência, ideal para armazenar sessões e dados temporários.",
+    "referencias": [],
+    "id": 44
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS facilita a publicação de mensagens para múltiplos assinantes?",
+    "alternativas": [
+      "Amazon S3",
+      "Amazon SNS",
+      "Amazon EFS",
+      "AWS CloudTrail"
+    ],
+    "resposta": 1,
+    "explicacao": "Amazon SNS permite publicar mensagens para endpoints diversos como e-mail, SMS e HTTP(S).",
+    "referencias": [
+      "https://aws.amazon.com/sns/"
+    ],
+    "id": 45
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Ao usar DynamoDB com Lambda, por que é útil habilitar DynamoDB Streams?",
+    "alternativas": [
+      "Para aumentar o tempo de execução da Lambda.",
+      "Para capturar e reagir a alterações de item em tempo real.",
+      "Para armazenar backups em outro bucket S3.",
+      "Para substituir a necessidade de índices secundários."
+    ],
+    "resposta": 1,
+    "explicacao": "DynamoDB Streams captura alterações na tabela e permite que funções Lambda processem essas alterações em tempo real.",
+    "referencias": [],
+    "id": 46
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual recurso do Amazon S3 permite controlar quem pode acessar objetos usando políticas baseadas em prefixo?",
+    "alternativas": [
+      "S3 Object Lock",
+      "S3 Bucket Policies",
+      "S3 Storage Class Analysis",
+      "S3 Event Notifications"
+    ],
+    "resposta": 1,
+    "explicacao": "S3 Bucket Policies podem restringir acesso a objetos com base em prefixos, ações e condições IAM.",
+    "referencias": [],
+    "id": 47
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Por que usar AWS CodeBuild em um pipeline CI/CD?",
+    "alternativas": [
+      "Para provisionar instâncias EC2 manualmente.",
+      "Para executar construção e testes em ambiente gerenciado.",
+      "Para gerenciar a rede VPC do projeto.",
+      "Para armazenar artefatos de produção apenas."
+    ],
+    "resposta": 1,
+    "explicacao": "CodeBuild executa etapas de build em containers gerenciados, permitindo CI/CD sem infraestrutura própria.",
+    "referencias": [
+      "https://aws.amazon.com/codebuild/"
+    ],
+    "id": 48
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS permite versionar a infraestrutura como código de aplicativos Serverless?",
+    "alternativas": [
+      "AWS CloudFormation",
+      "Amazon SQS",
+      "Amazon SNS",
+      "AWS KMS"
+    ],
+    "resposta": 0,
+    "explicacao": "AWS CloudFormation versiona e gerencia infraestrutura como código, incluindo stacks de aplicativos serverless.",
+    "referencias": [
+      "https://aws.amazon.com/cloudformation/"
+    ],
+    "id": 49
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual recurso IAM permite delegar permissões temporárias a uma aplicação ou serviço?",
+    "alternativas": [
+      "IAM Users permanentes",
+      "IAM Roles",
+      "IAM Groups estáticos",
+      "IAM Policies somente leitura"
+    ],
+    "resposta": 1,
+    "explicacao": "IAM Roles fornecem permissões temporárias que podem ser assumidas por aplicações e serviços sem credenciais permanentes.",
+    "referencias": [
+      "https://aws.amazon.com/iam/"
+    ],
+    "id": 50
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS fornece gerenciamento de chaves e operações criptográficas centralizadas?",
+    "alternativas": [
+      "AWS KMS",
+      "AWS Secrets Manager",
+      "AWS WAF",
+      "Amazon Inspector"
+    ],
+    "resposta": 0,
+    "explicacao": "AWS KMS é o serviço de gerenciamento de chaves que permite criar, controlar e usar chaves criptográficas na AWS.",
+    "referencias": [
+      "https://aws.amazon.com/kms/"
+    ],
+    "id": 51
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual é o objetivo de uma política de confiança em um IAM Role?",
+    "alternativas": [
+      "Especificar os serviços e identidades que podem assumir o role.",
+      "Listar os recursos que o role pode acessar.",
+      "Definir o custo do role na conta AWS.",
+      "Habilitar o role para ser usado apenas por usuários root."
+    ],
+    "resposta": 0,
+    "explicacao": "A política de confiança define quais entidades podem assumir o role, enquanto as políticas de permissão dizem o que o role pode fazer.",
+    "referencias": [],
+    "id": 52
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS pode auditar mudanças de configuração e eventos de API em sua conta?",
+    "alternativas": [
+      "AWS CloudTrail",
+      "AWS Config",
+      "AWS Shield",
+      "Amazon GuardDuty"
+    ],
+    "resposta": 0,
+    "explicacao": "AWS CloudTrail registra chamadas de API e eventos de gerenciamento em sua conta, fornecendo trilha de auditoria.",
+    "referencias": [
+      "https://aws.amazon.com/cloudtrail/"
+    ],
+    "id": 53
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS detecta atividades maliciosas ou comportamentos anômalos em sua conta?",
+    "alternativas": [
+      "Amazon Macie",
+      "AWS Config",
+      "Amazon GuardDuty",
+      "AWS Shield"
+    ],
+    "resposta": 2,
+    "explicacao": "Amazon GuardDuty monitora continuamente sua conta em busca de ameaças e comportamento malicioso.",
+    "referencias": [
+      "https://aws.amazon.com/guardduty/"
+    ],
+    "id": 54
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Como a encriptação do lado do servidor (SSE) protege objetos no S3?",
+    "alternativas": [
+      "Colocando objetos em um bucket separado.",
+      "Convertendo objetos para um formato proprietário da AWS.",
+      "Codificando o objeto com uma chave KMS ou gerenciada pela AWS antes de armazenar.",
+      "Excluindo automaticamente objetos após 24 horas."
+    ],
+    "resposta": 2,
+    "explicacao": "SSE criptografa objetos antes de gravá-los no S3 e os descriptografa ao recuperá-los, usando chaves KMS ou S3-managed.",
+    "referencias": [],
+    "id": 55
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS permite autenticação de usuários de aplicações mobile e web de forma gerenciada?",
+    "alternativas": [
+      "Amazon Cognito",
+      "AWS WAF",
+      "Amazon RDS",
+      "AWS X-Ray"
+    ],
+    "resposta": 0,
+    "explicacao": "Amazon Cognito fornece autenticação, autorização e gerenciamento de usuários para aplicativos mobile e web.",
+    "referencias": [
+      "https://aws.amazon.com/cognito/"
+    ],
+    "id": 56
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "O que é um WAF e por que usá-lo?",
+    "alternativas": [
+      "Um firewall de aplicações web para proteger contra ataques como injeção SQL e cross-site scripting.",
+      "Um serviço de backup de arquivos da web.",
+      "Uma solução de cache para conteúdos estáticos.",
+      "Um monitor de custo da AWS."
+    ],
+    "resposta": 0,
+    "explicacao": "WAF é um Web Application Firewall que protege aplicações contra ataques comuns na camada de aplicação.",
+    "referencias": [
+      "https://aws.amazon.com/waf/"
+    ],
+    "id": 57
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS permite definir regras de IAM com base em atributos do usuário e recursos?",
+    "alternativas": [
+      "AWS IAM Access Analyzer",
+      "IAM Policy Conditions",
+      "AWS Shield",
+      "AWS Organizations"
+    ],
+    "resposta": 1,
+    "explicacao": "As condições das políticas IAM permitem restringir permissões com base em atributos como tags, IP, hora e outros.",
+    "referencias": [],
+    "id": 58
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço da AWS é usado para versionamento e deploy de aplicações serverless com templates YAML?",
+    "alternativas": [
+      "AWS Serverless Application Model (SAM)",
+      "Amazon S3",
+      "Amazon SNS",
+      "Amazon VPC"
+    ],
+    "resposta": 0,
+    "explicacao": "AWS SAM permite modelar, empacotar e implantar aplicações serverless definida em templates YAML.",
+    "referencias": [
+      "https://aws.amazon.com/serverless/sam/"
+    ],
+    "id": 59
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS ajuda a detectar e responder a problemas de desempenho em aplicações distribuídas?",
+    "alternativas": [
+      "Amazon CloudWatch",
+      "AWS CloudTrail",
+      "AWS Config",
+      "Amazon S3"
+    ],
+    "resposta": 0,
+    "explicacao": "Amazon CloudWatch coleta métricas, logs e eventos para monitorar e responder a problemas de aplicações.",
+    "referencias": [
+      "https://aws.amazon.com/cloudwatch/"
+    ],
+    "id": 60
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Ao usar CodePipeline, qual fase normalmente executa testes automatizados?",
+    "alternativas": [
+      "Origem",
+      "Build",
+      "Deploy",
+      "Aprovação manual"
+    ],
+    "resposta": 1,
+    "explicacao": "A fase de Build em CodePipeline normalmente executa compilação e testes automatizados antes do deploy.",
+    "referencias": [],
+    "id": 61
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "O que é um artefato em um pipeline de CI/CD AWS?",
+    "alternativas": [
+      "O recurso de rede usado pelo pipeline.",
+      "O pacote gerado pelo processo de build usado em etapas seguintes.",
+      "Uma credencial do IAM usada pelo pipeline.",
+      "Uma instância EC2 que executa o build."
+    ],
+    "resposta": 1,
+    "explicacao": "Artefatos são os pacotes gerados pelo build que serão enviados para testes ou deploy em etapas posteriores.",
+    "referencias": [],
+    "id": 62
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual recurso AWS ajuda a manter diferentes versões de uma função Lambda para deploy controlado?",
+    "alternativas": [
+      "Lambda Versions e Aliases",
+      "Lambda Layers",
+      "Lambda Destinations",
+      "Lambda Event Mappings"
+    ],
+    "resposta": 0,
+    "explicacao": "Versions e Aliases permitem publicar versões imutáveis de uma Lambda e apontar aliases para gerenciar deploys e rollback.",
+    "referencias": [],
+    "id": 63
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "O que o AWS CloudFormation Change Set permite fazer antes de aplicar alterações?",
+    "alternativas": [
+      "Executar a stack imediatamente sem revisar.",
+      "Visualizar as alterações planejadas para revisar impactos.",
+      "Excluir a stack antiga automaticamente.",
+      "Substituir parâmetros de template por valores padrão."
+    ],
+    "resposta": 1,
+    "explicacao": "Change Sets permitem revisar quais recursos serão adicionados, modificados ou removidos antes de aplicar as alterações.",
+    "referencias": [],
+    "id": 64
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS oferece central de logs para coletar e analisar logs de múltiplas fontes?",
+    "alternativas": [
+      "AWS CloudTrail",
+      "Amazon CloudWatch Logs",
+      "Amazon Athena",
+      "Amazon QuickSight"
+    ],
+    "resposta": 1,
+    "explicacao": "CloudWatch Logs centraliza logs de aplicações, Lambda, EC2 e outros serviços para retenção e análise.",
+    "referencias": [],
+    "id": 65
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual recurso do CloudWatch permite disparar alarmes quando métricas ultrapassam limites definidos?",
+    "alternativas": [
+      "Dashboard",
+      "Metric Filters",
+      "CloudWatch Alarms",
+      "EventBridge"
+    ],
+    "resposta": 2,
+    "explicacao": "CloudWatch Alarms monitoram métricas e disparam ações quando limites são ultrapassados.",
+    "referencias": [],
+    "id": 66
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS é usado para implementar regras de eventos e respostas a eventos de sistema?",
+    "alternativas": [
+      "AWS CloudTrail",
+      "AWS Config",
+      "Amazon EventBridge",
+      "AWS Shield"
+    ],
+    "resposta": 2,
+    "explicacao": "EventBridge permite criar regras para eventos do sistema e disparar ações baseadas nesses eventos.",
+    "referencias": [
+      "https://aws.amazon.com/eventbridge/"
+    ],
+    "id": 67
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Por que é importante versionar artefatos de build em um pipeline CI/CD?",
+    "alternativas": [
+      "Para reduzir espaço em disco no servidor de build.",
+      "Para manter histórico e permitir rollback a versões anteriores.",
+      "Para evitar o uso de controles de versão como Git.",
+      "Para acelerar a inicialização do ambiente local."
+    ],
+    "resposta": 1,
+    "explicacao": "Versionar artefatos permite rastrear alterações, reimplantar versões testadas e realizar rollback seguro.",
+    "referencias": [],
+    "id": 68
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual tipo de log ajuda a analisar erros em funções Lambda após a execução?",
+    "alternativas": [
+      "Logs de acesso do S3",
+      "Logs do CloudWatch Logs",
+      "Logs do Route 53",
+      "Logs de desempenho do EC2"
+    ],
+    "resposta": 1,
+    "explicacao": "Logs do CloudWatch Logs capturam saídas e erros de funções Lambda, útil para depuração.",
+    "referencias": [],
+    "id": 69
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS pode ajudar a identificar causas de latência em aplicações distribuídas?",
+    "alternativas": [
+      "AWS X-Ray",
+      "Amazon Athena",
+      "AWS Glue",
+      "AWS Backup"
+    ],
+    "resposta": 0,
+    "explicacao": "AWS X-Ray traça solicitações em aplicações distribuídas para identificar gargalos de latência.",
+    "referencias": [
+      "https://aws.amazon.com/xray/"
+    ],
+    "id": 70
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "O que significa “infrastructure as code” em um contexto AWS?",
+    "alternativas": [
+      "Gerenciar infraestrutura através de scripts e arquivos de configuração versionados.",
+      "Configurar manualmente recursos no console.",
+      "Construir hardware físico internamente.",
+      "Executar apenas código sem infraestrutura."
+    ],
+    "resposta": 0,
+    "explicacao": "IaC usa descrições em código para provisionar e gerir infraestrutura de forma automatizável e reprodutível.",
+    "referencias": [],
+    "id": 71
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS é projetado para orquestrar contêineres em clusters gerenciados?",
+    "alternativas": [
+      "AWS CodeDeploy",
+      "Amazon ECS",
+      "AWS Lambda",
+      "Amazon S3"
+    ],
+    "resposta": 1,
+    "explicacao": "Amazon ECS orquestra contêineres Docker em clusters gerenciados pela AWS.",
+    "referencias": [
+      "https://aws.amazon.com/ecs/"
+    ],
+    "id": 72
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual benefício a AWS CodeDeploy oferece ao implantar aplicações?",
+    "alternativas": [
+      "Gerenciar manualmente cada instância.",
+      "Automatizar deploys em EC2, Lambda e ECS com estratégia de implantação.",
+      "Substituir a necessidade de testes automatizados.",
+      "Salvar artefatos apenas no S3."
+    ],
+    "resposta": 1,
+    "explicacao": "CodeDeploy automatiza deploys em várias plataformas e suporta estratégias como canary e blue/green.",
+    "referencias": [],
+    "id": 73
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço da AWS permite gerenciar e distribuir configurações de aplicação sem a necessidade de redeploy do código? ",
+    "alternativas": [
+      "AWS KMS",
+      "AWS Secrets Manager",
+      "AWS Config",
+      "AWS AppConfig"
+    ],
+    "resposta": 3,
+    "explicacao": "O AWS AppConfig permite atualizar configurações de forma centralizada e dinâmica, sem redeploy da aplicação.",
+    "referencias": [
+      "https://aws.amazon.com/appconfig/"
+    ],
+    "id": 74
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual ferramenta AWS permite definir infraestrutura como código usando linguagens de programação como Python e TypeScript?",
+    "alternativas": [
+      "AWS Management Console",
+      "AWS CloudFormation",
+      "AWS CDK (Cloud Development Kit)",
+      "AWS SAM"
+    ],
+    "resposta": 2,
+    "explicacao": "O AWS CDK permite criar recursos AWS com linguagens de programação familiares e abstrações de alto nível.",
+    "referencias": [
+      "https://aws.amazon.com/cdk/"
+    ],
+    "id": 75
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Fácil",
+    "pergunta": "Qual arquivo de configuração do AWS CodeBuild define os comandos de build, testes e os artefatos de saída?",
+    "alternativas": [
+      "template.yaml",
+      "buildspec.yml",
+      "samconfig.toml",
+      "pipeline.json"
+    ],
+    "resposta": 1,
+    "explicacao": "O buildspec.yml contém as etapas de build e os artefatos que o CodeBuild produzirá.",
+    "referencias": [
+      "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html"
+    ],
+    "id": 76
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual característica do AWS CloudFormation permite reverter uma atualização quando a implantação falha?",
+    "alternativas": [
+      "Capacidade de criar Change Sets antes da aplicação.",
+      "Versionamento automático dos templates no S3.",
+      "O CloudFormation manter o estado da stack e reverter para uma configuração anterior estável se a atualização falhar.",
+      "Uso de parâmetros para controlar recursos criados."
+    ],
+    "resposta": 2,
+    "explicacao": "O CloudFormation mantém o estado da stack e pode reverter alterações ao detectar falhas na atualização.",
+    "referencias": [
+      "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html"
+    ],
+    "id": 77
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual configuração de rede é essencial para permitir que uma função Lambda acesse recursos privados em uma VPC, como uma instância RDS?",
+    "alternativas": [
+      "Anexar um Internet Gateway à VPC onde a função Lambda e o RDS estão localizados.",
+      "Configurar a função Lambda com as sub-redes privadas da VPC e um grupo de segurança que permita o acesso ao RDS.",
+      "Configurar a função Lambda para ser executada em sub-redes públicas da VPC.",
+      "Criar um VPC Endpoint para o serviço Lambda dentro da VPC."
+    ],
+    "resposta": 1,
+    "explicacao": "A função Lambda deve executar em sub-redes privadas e ter um grupo de segurança que permita comunicação com o RDS.",
+    "referencias": [],
+    "id": 78
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS atua como a porta de entrada para expor uma API RESTful com gerenciamento de autenticação, autorização e throttling?",
+    "alternativas": [
+      "Application Load Balancer (ALB)",
+      "Amazon SQS",
+      "Amazon API Gateway",
+      "AWS Lambda com Function URLs"
+    ],
+    "resposta": 2,
+    "explicacao": "O Amazon API Gateway gerencia APIs, oferecendo autenticação, autorização, throttling e versionamento.",
+    "referencias": [
+      "https://aws.amazon.com/api-gateway/"
+    ],
+    "id": 79
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Fácil",
+    "pergunta": "Uma função Lambda precisa de mais tempo de execução para processar arquivos grandes. Qual ação direta resolve isso, assumindo que a lógica da função já está otimizada?",
+    "alternativas": [
+      "Aumentar o Timeout permite que a função tenha mais tempo para concluir o processamento.",
+      "Configurar Provisioned Concurrency para a função Lambda.",
+      "Aumentar a memória alocada para a função Lambda.",
+      "Dividir a função Lambda em múltiplas funções menores e orquestrá-las com AWS Step Functions."
+    ],
+    "resposta": 0,
+    "explicacao": "Aumentar o timeout permite que a função tenha mais tempo para concluir tarefas longas antes de expirar.",
+    "referencias": [],
+    "id": 80
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual é a principal vantagem de usar uma AWS Managed Policy em vez de uma Customer Managed Policy?",
+    "alternativas": [
+      "Oferece maior granularidade e personalização.",
+      "Permite o versionamento das políticas.",
+      "Pode ser anexada a um número ilimitado de entidades.",
+      "É gerenciada e atualizada pela AWS, garantindo melhores práticas sem intervenção do cliente."
+    ],
+    "resposta": 3,
+    "explicacao": "AWS Managed Policies são mantidas pela AWS e atualizadas conforme as melhores práticas de permissão.",
+    "referencias": [],
+    "id": 81
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço da AWS facilita o deploy automatizado de uma aplicação web Python, gerenciando servidores, load balancers e escalabilidade?",
+    "alternativas": [
+      "AWS Elastic Beanstalk",
+      "Amazon EC2",
+      "AWS Lambda",
+      "AWS CloudFormation"
+    ],
+    "resposta": 0,
+    "explicacao": "Elastic Beanstalk automatiza o deployment e gerenciamento de aplicações web semicustomizadas.",
+    "referencias": [
+      "https://aws.amazon.com/elasticbeanstalk/"
+    ],
+    "id": 82
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS é indicado para ingerir dados de streaming em tempo real duráveis e processados por múltiplos consumidores?",
+    "alternativas": [
+      "Amazon SQS FIFO Queues",
+      "Amazon Kinesis Data Streams",
+      "Amazon SNS",
+      "AWS Step Functions"
+    ],
+    "resposta": 1,
+    "explicacao": "Kinesis Data Streams é projetado para ingestão de dados em streaming e consumo por múltiplos aplicativos simultâneos.",
+    "referencias": [
+      "https://aws.amazon.com/kinesis/data-streams/"
+    ],
+    "id": 83
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual parâmetro do DynamoDB PutItem deve ser usado para garantir que um item seja inserido somente se ainda não existir?",
+    "alternativas": [
+      "ReturnValues com ALL_OLD",
+      "ConditionExpression com attribute_not_exists(partitionKeyName)",
+      "Expected com condição de inexistência.",
+      "UpdateExpression com SET e condição de inexistência."
+    ],
+    "resposta": 1,
+    "explicacao": "A condição attribute_not_exists assegura que a operação só ocorra se o item não existir previamente.",
+    "referencias": [],
+    "id": 84
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Como o AWS Lambda lida com falhas em invocações assíncronas, como eventos do S3, por padrão?",
+    "alternativas": [
+      "Tenta novamente indefinidamente.",
+      "O S3 tenta novamente até 10 vezes.",
+      "Não tenta novamente; falha é apenas registrada no CloudWatch Logs.",
+      "Tenta novamente duas vezes por padrão e pode enviar o evento para uma DLQ se configurada."
+    ],
+    "resposta": 3,
+    "explicacao": "O Lambda realiza duas tentativas automáticas para invocações assíncronas e pode redirecionar o evento a uma DLQ.",
+    "referencias": [],
+    "id": 85
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS oferece um HSM dedicado gerenciado na nuvem para geração e armazenamento de chaves criptográficas?",
+    "alternativas": [
+      "AWS Secrets Manager",
+      "AWS Certificate Manager",
+      "AWS CloudHSM",
+      "AWS KMS"
+    ],
+    "resposta": 2,
+    "explicacao": "AWS CloudHSM fornece HSMs dedicados gerenciados para atender requisitos de conformidade e controle de chaves.",
+    "referencias": [
+      "https://aws.amazon.com/cloudhsm/"
+    ],
+    "id": 86
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS é mais adequado para orquestrar workflows complexos com etapas sequenciais e políticas de retry?",
+    "alternativas": [
+      "Amazon SQS",
+      "AWS Step Functions",
+      "AWS Lambda",
+      "Amazon EventBridge"
+    ],
+    "resposta": 1,
+    "explicacao": "AWS Step Functions orquestra estados e tarefas com retries, paralelismo e lógica de fluxo.",
+    "referencias": [
+      "https://aws.amazon.com/step-functions/"
+    ],
+    "id": 87
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS permite rastrear e diagnosticar a cadeia de chamadas em aplicações distribuídas para identificar gargalos?",
+    "alternativas": [
+      "Amazon CloudWatch Logs",
+      "AWS X-Ray",
+      "Amazon CloudWatch Metrics",
+      "AWS CloudTrail"
+    ],
+    "resposta": 1,
+    "explicacao": "AWS X-Ray fornece visualização de traces entre serviços e ajuda a identificar pontos de latência.",
+    "referencias": [
+      "https://aws.amazon.com/xray/"
+    ],
+    "id": 88
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS gerencia APIs GraphQL de forma nativa e integrada a outros serviços de backend?",
+    "alternativas": [
+      "Amazon API Gateway REST API",
+      "AWS AppSync",
+      "AWS Elastic Beanstalk",
+      "Amazon Kinesis Data Streams"
+    ],
+    "resposta": 1,
+    "explicacao": "AWS AppSync é o serviço gerenciado para APIs GraphQL, integrando dados de múltiplas fontes.",
+    "referencias": [
+      "https://aws.amazon.com/appsync/"
+    ],
+    "id": 89
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual ferramenta AWS serverless permite definir recursos e testar funções localmente com Docker?",
+    "alternativas": [
+      "AWS CloudFormation",
+      "AWS SAM",
+      "AWS CodeDeploy",
+      "Amazon ECS"
+    ],
+    "resposta": 1,
+    "explicacao": "AWS SAM facilita o desenvolvimento serverless e permite invocar funções localmente com o SAM CLI.",
+    "referencias": [
+      "https://aws.amazon.com/serverless/sam/"
+    ],
+    "id": 90
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço AWS é mais indicado para armazenar e rotacionar automaticamente credenciais de banco de dados?",
+    "alternativas": [
+      "AWS Systems Manager Parameter Store",
+      "AWS Secrets Manager",
+      "Variáveis de ambiente na Lambda",
+      "AWS KMS"
+    ],
+    "resposta": 1,
+    "explicacao": "AWS Secrets Manager armazena, criptografa e rotaciona segredos automaticamente.",
+    "referencias": [
+      "https://aws.amazon.com/secrets-manager/"
+    ],
+    "id": 91
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual ação correta associa uma CMK existente a um grupo de logs do CloudWatch Logs para criptografia em repouso?",
+    "alternativas": [
+      "Modificar a política da chave KMS e atualizar o grupo via console.",
+      "Usar aws logs associate-kms-key na AWS CLI com o nome do grupo e o ARN da CMK simétrica.",
+      "Criar uma função Lambda que aplique criptografia aos logs existentes.",
+      "Exportar os logs para um bucket S3 com SSE-KMS."
+    ],
+    "resposta": 1,
+    "explicacao": "O comando aws logs associate-kms-key associa diretamente uma CMK simétrica ao groupo de logs.",
+    "referencias": [],
+    "id": 92
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual padrão de arquitetura com SNS e SQS é mais adequado para desacoplar dois processos independentes de envio de e-mail e atualização de inventário?",
+    "alternativas": [
+      "Publicar em um tópico SNS com uma fila SQS e uma Lambda diretamente inscritas.",
+      "Publicar em um tópico SNS com duas filas SQS distintas subscrevendo ao tópico, cada uma com sua própria Lambda consumidora.",
+      "Enviar a mensagem diretamente para uma fila SQS e invocar duas Lambdas síncronas.",
+      "Usar API Gateway para expor dois endpoints sequenciais."
+    ],
+    "resposta": 1,
+    "explicacao": "Duas filas SQS subscrevendo ao mesmo tópico SNS desacoplam o fluxo e permitem processamento paralelo independente.",
+    "referencias": [],
+    "id": 93
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Para consultar frequentemente produtos por category e price em uma tabela DynamoDB que usa product_id como chave de partição, qual recurso deve ser utilizado?",
+    "alternativas": [
+      "Utilizar Scan com filtros.",
+      "Criar um Global Secondary Index (GSI) com category como partição e price como ordenação.",
+      "Utilizar um Local Secondary Index (LSI).",
+      "Criar outra tabela DynamoDB sincronizada."
+    ],
+    "resposta": 1,
+    "explicacao": "Um GSI permite consultas eficientes usando chaves alternativas como category e price.",
+    "referencias": [],
+    "id": 94
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Como garantir que uma leitura do DynamoDB retorne os dados mais recentes possíveis?",
+    "alternativas": [
+      "GetItem com ConsistentRead=True",
+      "Scan com ConsistentRead=True",
+      "GetItem sem ConsistentRead",
+      "Query sem ConsistentRead"
+    ],
+    "resposta": 0,
+    "explicacao": "GetItem com ConsistentRead=True realiza uma leitura fortemente consistente.",
+    "referencias": [],
+    "id": 95
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual serviço é mais indicado para externalizar o estado de sessão de uma aplicação web legada e oferecer baixa latência?",
+    "alternativas": [
+      "Amazon S3",
+      "Amazon DynamoDB",
+      "Amazon ElastiCache for Redis",
+      "Amazon SQS"
+    ],
+    "resposta": 2,
+    "explicacao": "ElastiCache for Redis fornece armazenamento em memória rápido, ideal para sessões compartilhadas entre instâncias.",
+    "referencias": [
+      "https://aws.amazon.com/elasticache/redis/"
+    ],
+    "id": 96
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual modo de capacidade do DynamoDB é mais indicado para cargas imprevisíveis que não podem ser previstas antecipadamente?",
+    "alternativas": [
+      "Reserved Capacity",
+      "Global Tables",
+      "Provisioned Mode com Auto Scaling",
+      "On-Demand Mode"
+    ],
+    "resposta": 3,
+    "explicacao": "On-Demand Mode ajusta a capacidade automaticamente para cargas imprevisíveis, evitando ProvisionedThroughputExceededException.",
+    "referencias": [],
+    "id": 97
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual abordagem segue o princípio do menor privilégio ao conceder permissões a uma aplicação AWS?",
+    "alternativas": [
+      "Armazenar credenciais do usuário root na aplicação.",
+      "Compartilhar credenciais de um usuário IAM existente.",
+      "Criar usuário IAM com AdministratorAccess.",
+      "Criar uma role IAM com permissões mínimas necessárias e associá-la ao serviço ou credenciais de acesso."
+    ],
+    "resposta": 3,
+    "explicacao": "A role IAM com permissões mínimas garante que a aplicação tenha apenas os acessos necessários.",
+    "referencias": [],
+    "id": 98
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual estratégia do AWS CodeDeploy é mais adequada para atualizar um pequeno grupo de instâncias primeiro e interromper se ocorrer uma falha?",
+    "alternativas": [
+      "Canary (ou Linear com um pequeno percentual inicial)",
+      "Blue/Green",
+      "AllAtOnce",
+      "RollingUpdate sem rollback"
+    ],
+    "resposta": 0,
+    "explicacao": "Canary permite testar a nova versão em um pequeno grupo inicial e parar ou reverter se houver falhas.",
+    "referencias": [],
+    "id": 99
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual serviço deve ser usado com um bucket S3 para distribuir conteúdo estático globalmente com baixa latência?",
+    "alternativas": [
+      "Amazon ElastiCache",
+      "Amazon CloudFront",
+      "AWS Global Accelerator",
+      "Application Load Balancer"
+    ],
+    "resposta": 1,
+    "explicacao": "CloudFront usa edge locations para entregar conteúdo S3 com baixa latência para usuários globais.",
+    "referencias": [
+      "https://aws.amazon.com/cloudfront/"
+    ],
+    "id": 100
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual recurso do Lambda permite compartilhar bibliotecas Python externas sem empacotar tudo junto com o código da função?",
+    "alternativas": [
+      "Variáveis de ambiente",
+      "Lambda Layers",
+      "Aliases da função Lambda",
+      "Lambda Destinations"
+    ],
+    "resposta": 1,
+    "explicacao": "Lambda Layers permitem empacotar dependências separadamente e reutilizá-las em várias funções.",
+    "referencias": [
+      "https://aws.amazon.com/lambda/features/layers/"
+    ],
+    "id": 101
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual política de ciclo de vida é mais apropriada para dados que são acessados frequentemente no primeiro mês e precisam ser mantidos por sete anos?",
+    "alternativas": [
+      "Manter em S3 Standard por 30 dias e migrar para S3 Glacier Deep Archive.",
+      "Migrar para S3 Express One Zone imediatamente.",
+      "Migrar para S3 Glacier Deep Archive após 30 dias e depois para Glacier Instant Retrieval.",
+      "Manter em S3 Standard-IA por 30 dias e excluir após um ano."
+    ],
+    "resposta": 0,
+    "explicacao": "S3 Glacier Deep Archive é a opção mais econômica para retenção de longo prazo após um período inicial de acesso frequente.",
+    "referencias": [],
+    "id": 102
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual recurso do Amazon SQS deve ser habilitado para reduzir o número de chamadas vazias ao receber mensagens?",
+    "alternativas": [
+      "Long Polling",
+      "Message Delay",
+      "Visibility Timeout",
+      "Dead Letter Queue"
+    ],
+    "resposta": 0,
+    "explicacao": "Long Polling reduz requests vazios ao esperar pela chegada de mensagens antes de retornar.",
+    "referencias": [],
+    "id": 103
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual é a prática recomendada para conceder permissões a uma função Lambda que precisa gravar logs e ler objetos de um bucket S3 específico?",
+    "alternativas": [
+      "Conceder acesso total ao S3 e CloudWatch para simplificar.",
+      "Configurar uma política de bucket e confiar nas permissões padrão do Lambda.",
+      "Anexar AWSLambdaBasicExecutionRole e uma política customizada que permita s3 para o bucket específico.",
+      "Criar um usuário IAM e embutir suas chaves no código."
+    ],
+    "resposta": 2,
+    "explicacao": "A Execution Role deve incluir a política gerenciada para logs e uma política mínima para acesso ao bucket específico.",
+    "referencias": [],
+    "id": 104
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual é o princípio fundamental do Blue/Green Deployment?",
+    "alternativas": [
+      "Liberar a nova versão para uma pequena porcentagem de usuários.",
+      "Manter dois ambientes idênticos e alternar o tráfego para o novo ambiente após os testes.",
+      "Atualizar instâncias em grupos sequenciais.",
+      "Implantar a nova versão diretamente em produção."
+    ],
+    "resposta": 1,
+    "explicacao": "Blue/Green Deployment mantém dois ambientes e alterna o tráfego para facilitar rollback rápido.",
+    "referencias": [],
+    "id": 105
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Qual componente deve ser instalado nas instâncias EC2 e containers para enviar dados de trace ao AWS X-Ray?",
+    "alternativas": [
+      "X-Ray Daemon",
+      "Systems Manager Agent",
+      "CloudWatch Agent",
+      "Lambda Runtime"
+    ],
+    "resposta": 0,
+    "explicacao": "O X-Ray Daemon coleta e envia os traces gerados pelos SDKs X-Ray para o serviço na nuvem.",
+    "referencias": [],
+    "id": 106
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual configuração do SQS deve ser implementada para armazenar mensagens que falham repetidamente e permitir reprocessamento posterior?",
+    "alternativas": [
+      "Aumentar o VisibilityTimeout.",
+      "Configurar uma Dead-Letter Queue (DLQ) para a fila principal.",
+      "Implementar Long Polling.",
+      "Usar filas FIFO para garantir ordem."
+    ],
+    "resposta": 1,
+    "explicacao": "A DLQ isola mensagens problemáticas para análise e reprocessamento, sem parar o fluxo principal.",
+    "referencias": [],
+    "id": 107
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Fácil",
+    "pergunta": "Qual tipo de Server-Side Encryption deve ser configurado em um bucket S3 usando chaves gerenciadas pela AWS?",
+    "alternativas": [
+      "SSE-S3",
+      "SSE-C",
+      "Criptografia no cliente",
+      "SSE-KMS com chave gerenciada pela AWS"
+    ],
+    "resposta": 0,
+    "explicacao": "SSE-S3 usa chaves gerenciadas pela AWS para criptografar objetos no servidor.",
+    "referencias": [],
+    "id": 108
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Qual serviço AWS deve ser usado com um bucket S3 para otimizar a entrega de conteúdo estático globalmente?",
+    "alternativas": [
+      "Amazon ElastiCache",
+      "Amazon CloudFront",
+      "AWS Global Accelerator",
+      "Application Load Balancer"
+    ],
+    "resposta": 1,
+    "explicacao": "Amazon CloudFront distribui conteúdo do S3 via edge locations para reduzir a latência.",
+    "referencias": [
+      "https://aws.amazon.com/cloudfront/"
+    ],
+    "id": 109
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual é a maneira mais segura de fornecer credenciais temporárias a uma instância EC2 para acessar outros serviços AWS?",
+    "alternativas": [
+      "Passar as chaves no user data.",
+      "Usar AWS KMS para armazenar as chaves.",
+      "Armazenar chaves em um arquivo protegido na instância.",
+      "Criar uma role IAM e associá-la à instância por meio de um Instance Profile."
+    ],
+    "resposta": 3,
+    "explicacao": "Um Instance Profile fornece credenciais temporárias gerenciadas de forma segura pelo metadata service.",
+    "referencias": [],
+    "id": 110
+  },
+  {
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Qual é a forma mais segura e flexível de fornecer uma chave de API para uma função Lambda, sem codificá-la no código?",
+    "alternativas": [
+      "Variável de ambiente criptografada com KMS.",
+      "AWS Secrets Manager com permissoes IAM para recuperar em tempo de execução.",
+      "Salvar a chave em um arquivo no pacote de deployment.",
+      "Passar a chave no payload do evento."
+    ],
+    "resposta": 1,
+    "explicacao": "Secrets Manager armazena e rotaciona segredos, permitindo acesso seguro em tempo de execução.",
+    "referencias": [],
+    "id": 111
+  },
+  {
+    "id": 112,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Um desenvolvedor está construindo uma aplicação serverless na AWS e deseja estabelecer um fluxo de trabalho de desenvolvimento acelerado. O fluxo de trabalho deve permitir que o desenvolvedor implante alterações incrementais para testes sem precisar implantar a aplicação inteira a cada commit de código. O desenvolvedor deseja otimizar o processo e, ao mesmo timepo, minimizar o tempo de implantação. O que o desenvolvedor deve fazer para atender a esses requisitos?",
+    "alternativas": [
+      "Use o comando cdk deploy do AWS Cloud Development Kit (AWS CDK) para implantar alterações incrementais na AWS para teste",
+      "Use o comando sam deploy do AWS Serverless Application Model (AWS SAM) para implantar alterações incrementais",
+      "Use o comando sam sync do AWS Serverless Application Model (AWS SAM) para implantar alterações incrementais",
+      "Use o comando cdk diff do AWS Cloud Development Kit (AWS CDK) para implantar alterações incrementais na AWS para teste"
+    ],
+    "resposta": 2,
+    "explicacao": "O comando sam sync permite sincronizar alterações de código e infraestrutura em tempo real com o ambiente de desenvolvimento na nuvem, sem precisar redeployar toda a stack via CloudFormation a cada alteração.",
+    "referencias": []
+  },
+  {
+    "id": 113,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa de TI migrou para uma pilha de aplicativos sem servidor na Nuvem AWS, com a camada de computação sendo implementada por meio de funções Lambda. Os gerentes de engenharia gostariam de solucionar ativamente quaisquer falhas nas funções Lambda. Como Developer Associate, qual das seguintes soluções você sugeriria para este caso de uso?",
+    "alternativas": [
+      "Use o CodeCommit para identificar e notificar quaisquer falhas no código Lambda",
+      "Use o CloudWatch Events para identificar e notificar quaisquer falhas no código Lambda",
+      "Os desenvolvedores devem inserir instruções de logging no código da função Lambda, que ficam então disponíveis via CloudWatch logs",
+      "Use o CodeDeploy para identificar e notificar quaisquer falhas no código Lambda"
+    ],
+    "resposta": 2,
+    "explicacao": "O AWS Lambda envia automaticamente registros de stdout/stderr e logs gravados no código para o CloudWatch Logs, permitindo a investigação de falhas e exceções das funções.",
+    "referencias": []
+  },
+  {
+    "id": 114,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Você está criando um pipeline de CI/CD usando AWS CodePipeline e AWS CodeBuild. O requisito é que o pipeline apenas implemente mudanças para o ambiente de produção se todos os testes forem aprovados com sucesso. Qual recurso da AWS deve ser usado para impor essa validação antes da etapa de implantação?",
+    "alternativas": [
+      "AWS Config",
+      "AWS CloudTrail",
+      "AWS CodeDeploy Pre-traffic Hook",
+      "AWS CodePipeline Approval Action"
+    ],
+    "resposta": 3,
+    "explicacao": "As ações de aprovação do CodePipeline permitem pausar o pipeline para validação manual ou automatizada antes de prosseguir para estágios críticos, como produção.",
+    "referencias": []
+  },
+  {
+    "id": 115,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "A equipe de desenvolvimento de uma empresa de varejo está se preparando para a próxima liquidação de Ação de Graças e quer ter certeza de que o backend sem servidor do aplicativo, executado por meio de funções Lambda, não atinja gargalos de latência como resultado do pico de tráfego. Como Desenvolvedor Associado, qual das seguintes soluções você recomendaria para abordar esse caso de uso?",
+    "alternativas": [
+      "Configurar o Application Auto Scaling para gerenciar a simultaneidade provisionada do Lambda de acordo com uma programação",
+      "Não há necessidade de fazer nenhuma provisão especial, pois o Lambda é automaticamente escalável devido à sua natureza sem servidor",
+      "Configurar o Application Auto Scaling para gerenciar a simultaneidade reservada do Lambda de acordo com uma programação",
+      "Adicione um Application Load Balancer na frente das funções Lambda"
+    ],
+    "resposta": 0,
+    "explicacao": "A Provisioned Concurrency mantém ambientes de execução pré-inicializados, reduzindo o cold start, e pode ser ajustada por Application Auto Scaling para atender a picos previstos.",
+    "referencias": []
+  },
+  {
+    "id": 116,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Um aplicativo de jogo social permite a transferência de vales-presente entre usuários. Quando um usuário atinge um determinado marco na tabela de classificação, ele ganha um vale-presente que pode ser resgatado ou transferido para outro usuário. A equipe de desenvolvimento quer garantir que essa transferência seja registrada no banco de dados, de forma que os registros de ambos os usuários sejam gravados com sucesso com os novos vales-presente ou que o status quo seja mantido. Qual das seguintes soluções representa as opções mais adequadas para atender aos requisitos do caso de uso fornecido? (Selecione duas)",
+    "alternativas": [
+      "Execute operações de leitura e gravação do DynamoDB com o parâmetro ConsistentRead definido como verdadeiro",
+      "Use as APIs de leitura e gravação transacionais do Amazon Athena nos itens da tabela como uma única operação do tipo tudo ou nada",
+      "Conclua ambas as operações no Amazon RedShift em um único bloco de transação",
+      "Conclua ambas as operações no RDS MySQL em um único bloco de transação",
+      "Use as APIs de leitura e gravação transacionais do DynamoDB nos itens da tabela como uma única operação do tipo tudo ou nada"
+    ],
+    "resposta": [
+      3,
+      4
+    ],
+    "explicacao": "Transações ACID garantem que ambas as gravações ocorram com sucesso ou nenhuma aconteça. O RDS MySQL suporta blocos de transação e o DynamoDB oferece TransactWriteItems para escrita atômica.",
+    "referencias": []
+  },
+  {
+    "id": 117,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Qual tipo de volume EBS oferece até 256.000 IOPS por volume?",
+    "alternativas": [
+      "gp3",
+      "io1",
+      "io2 Block Express",
+      "st1"
+    ],
+    "resposta": 2,
+    "explicacao": "Os volumes io2 Block Express foram projetados para cargas de missão crítica e oferecem até 256.000 IOPS por volume.",
+    "referencias": []
+  },
+  {
+    "id": 118,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Sua organização global possui uma infraestrutura de TI que é implantada usando CloudFormation na Nuvem AWS. Um funcionário, na Região us-east-1, criou uma stack Application1 e fez um output exportado com o nome ELBDNSName. Outro funcionário criou uma stack para uma aplicação diferente Application2 na Região us-east-2 e também exportou um output com o nome ELBDNSName. O primeiro funcionário queria implantar a stack do CloudFormation Application1 em us-east-2, mas ocorreu um erro. Qual é a causa do erro?",
+    "alternativas": [
+      "Valores de Saída Exportados no CloudFormation devem ter nomes únicos em todas as Regiões",
+      "Valores de Saída no CloudFormation devem ter nomes únicos em todas as Regiões",
+      "Valores de Saída no CloudFormation devem ter nomes únicos dentro de uma única Região",
+      "Valores de Saída Exportados no CloudFormation devem ter nomes únicos dentro de uma única Região"
+    ],
+    "resposta": 3,
+    "explicacao": "Os nomes de exportação do CloudFormation precisam ser exclusivos por conta dentro da mesma região. O conflito ocorreu porque ELBDNSName já havia sido exportado por outra stack na mesma região.",
+    "referencias": []
+  },
+  {
+    "id": 119,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Você está executando um aplicativo web onde os usuários podem criar blogs e compartilhá-los com seus seguidores. A maior parte do fluxo de trabalho é baseada em leitura, mas quando um blog é atualizado, você gostaria de garantir que os dados mais recentes sejam servidos aos usuários (sem dados obsoletos). O desenvolvedor já sugeriu o uso do ElastiCache para lidar com a carga de leitura, mas pediu que você implementasse uma estratégia de cache que cumpra os requisitos do site. Qual abordagem é a mais adequada?",
+    "alternativas": [
+      "Use uma estratégia de Write Through",
+      "Use uma estratégia de Lazy Loading com TTL",
+      "Use DAX",
+      "Use uma estratégia de Lazy Loading sem TTL"
+    ],
+    "resposta": 0,
+    "explicacao": "Write-through atualiza o cache sempre que os dados são gravados no banco, garantindo que o cache contenha os dados mais recentes e evitando stale data.",
+    "referencias": []
+  },
+  {
+    "id": 120,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Crie um grupo de Dimensionamento Automático para trabalhar com um Balanceador de Carga de Aplicação. O grupo de dimensionamento está configurado com um valor mínimo de tamanho de 5, um valor máximo de 20 e um valor de capacidade desejado de 10. Uma das 10 instâncias do EC2 foi relatada como não íntegra. Qual das seguintes ações ocorrerá?",
+    "alternativas": [
+      "O ASG encerrará a instância EC2",
+      "O ASG manterá a instância em execução e reiniciará o aplicativo",
+      "O ASG formatará a unidade raiz do EBS na instância do EC2 e executará os Dados do Usuário novamente",
+      "O ASG irá separar a instância EC2 do grupo e deixá-la em execução"
+    ],
+    "resposta": 0,
+    "explicacao": "Quando uma instância do Auto Scaling Group é marcada como unhealthy, o ASG a encerra e lança uma nova para manter a capacidade desejada.",
+    "referencias": []
+  },
+  {
+    "id": 121,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Você tem um grupo de Auto Scaling configurado para uma capacidade mínima de 1 e uma capacidade máxima de 5, projetado para lançar instâncias EC2 em 3 Zonas de Disponibilidade. Durante um período de baixa utilização, uma Zona de Disponibilidade inteira caiu e seu aplicativo sofreu tempo de inatividade. O que você pode fazer para garantir que seu aplicativo permaneça altamente disponível?",
+    "alternativas": [
+      "Aumente a capacidade mínima de instâncias do Auto Scaling Group para 2",
+      "Configure o failover rápido do ASG",
+      "Altere a métrica de dimensionamento da política de auto-scaling para bytes de rede",
+      "Habilite o RDS Multi-AZ"
+    ],
+    "resposta": 0,
+    "explicacao": "Uma capacidade mínima muito baixa pode permitir que todas as instâncias fiquem em apenas uma AZ. Aumentar o mínimo ajuda a distribuir a capacidade entre zonas e manter a disponibilidade.",
+    "referencias": []
+  },
+  {
+    "id": 122,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Sua empresa armazenou todos os segredos de aplicativos no SSM Parameter Store. A equipe de auditoria solicitou um relatório para entender melhor quando e quem emitiu chamadas de API contra o SSM Parameter Store. Qual das seguintes opções pode ser usada para produzir seu relatório?",
+    "alternativas": [
+      "Use os Logs de Acesso do SSM Parameter Store no CloudWatch Logs para obter um registro das ações realizadas por um usuário",
+      "Use os Logs de Acesso do SSM Parameter Store no S3 para obter um registro das ações realizadas por um usuário",
+      "Use o AWS CloudTrail para obter um registro das ações realizadas por um usuário",
+      "Use o recurso de Lista do SSM Parameter Store para obter um registro das ações realizadas por um usuário"
+    ],
+    "resposta": 2,
+    "explicacao": "O CloudTrail registra chamadas de API e atividades na conta AWS, sendo o serviço apropriado para auditoria de acesso ao Parameter Store.",
+    "referencias": []
+  },
+  {
+    "id": 123,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Sua empresa gerencia centenas de instâncias EC2 executando o sistema operacional Linux. As instâncias estão configuradas em várias Zonas de Disponibilidade na região eu-west-3. Seu gerente solicitou a coleta de métricas de memória do sistema em todas as instâncias EC2 usando um script. Qual das seguintes soluções o ajudrá a coletar esses dados?",
+    "alternativas": [
+      "Extraia as estatísticas de RAM usando os metadados da instância",
+      "Use um cron job nas instâncias que envia as estatísticas de RAM do EC2 como uma métrica personalizada para o CloudWatch",
+      "Extraia as estatísticas de RAM usando o X-Ray",
+      "Extraia as estatísticas de RAM das métricas padrão do CloudWatch para instâncias EC2"
+    ],
+    "resposta": 1,
+    "explicacao": "Memória do sistema não é coletada nativamente pelo CloudWatch padrão no EC2; é necessário enviar métricas personalizadas a partir da instância.",
+    "referencias": []
+  },
+  {
+    "id": 124,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Fácil",
+    "pergunta": "Um desenvolvedor precisa automatizar a implantação de pacotes de software em instâncias do Amazon EC2 e em servidores virtuais executados no local, como parte da integração e entrega contínuas adotadas pela empresa. Qual serviço da AWS ele deve usar para realizar essa tarefa?",
+    "alternativas": [
+      "AWS CodeDeploy",
+      "AWS CodeBuild",
+      "AWS CodePipeline",
+      "AWS Elastic Beanstalk"
+    ],
+    "resposta": 0,
+    "explicacao": "O CodeDeploy automatiza a implantação de aplicativos em instâncias EC2 e em servidores on-premises usando agentes do serviço.",
+    "referencias": []
+  },
+  {
+    "id": 125,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Fácil",
+    "pergunta": "No Amazon SQS, qual técnica permite que o consumidor espere por mensagens por um período maior, reduzindo chamadas desnecessárias à fila, diminuindo a latência e os custos de operação ao manter a conexão aberta por até 20 segundos?",
+    "alternativas": [
+      "Short polling",
+      "Dead-letter queue",
+      "Long polling",
+      "Visibility timeout"
+    ],
+    "resposta": 2,
+    "explicacao": "O long polling permite aguardar até 20 segundos por mensagens em vez de retornar respostas vazias imediatamente, reduzindo chamadas e custos.",
+    "referencias": []
+  },
+  {
+    "id": 126,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Como Líder de Equipe, você deverá gerar um relatório semanal das compilações de código para reportar internamente e ao cliente. Este relatório contém o número de compilações de código realizadas em uma semana, a porcentagem de sucesso e falha e o tempo total gasto nessas compilações pelos membros da equipe. Você também precisa recuperar os logs do CodeBuild para compilações com falha e analisá-los no Athena. Qual das seguintes opções ajudará a atingir isso?",
+    "alternativas": [
+      "Usar eventos do CloudWatch",
+      "Usar a integração do AWS Lambda",
+      "Use o AWS CloudTrail e entregue logs ao S3",
+      "Habilitar integração do S3 e do CloudWatch Logs"
+    ],
+    "resposta": 3,
+    "explicacao": "O CodeBuild pode enviar logs para o CloudWatch Logs e armazenar artefatos no S3, permitindo que o Athena consulte e analise registros de compilação.",
+    "referencias": []
+  },
+  {
+    "id": 127,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Você está desenvolvendo funções Lambda usando AWS CLI e precisa definir variáveis de ambiente que incluem informações confidenciais, como nomes de tabelas de banco de dados. Qual é o limite aplicado ao total de variáveis de ambiente em uma função Lambda?",
+    "alternativas": [
+      "O tamanho total de todas as variáveis de ambiente não deve exceder 4 KB.",
+      "O tamanho total de todas as variáveis de ambiente não deve exceder 2 KB.",
+      "O tamanho total de todas as variáveis de ambiente não deve exceder 8 KB.",
+      "O tamanho total de todas as variáveis de ambiente não deve exceder 16 KB."
+    ],
+    "resposta": 0,
+    "explicacao": "O limite total de todas as chaves e valores combinados para variáveis de ambiente do Lambda é 4 KB.",
+    "referencias": []
+  },
+  {
+    "id": 128,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Fácil",
+    "pergunta": "Você está desenvolvendo funções Lambda que precisam reutilizar bibliotecas e dependências entre várias funções. Para isso, decide usar camadas do Lambda (Lambda Layers). Qual das seguintes afirmações sobre camadas está correta?",
+    "alternativas": [
+      "Uma função Lambda pode incluir até 10 camadas.",
+      "Uma função Lambda pode incluir até 5 camadas.",
+      "Uma função Lambda pode incluir até 2 camadas.",
+      "Uma função Lambda pode incluir quantas camadas forem necessárias"
+    ],
+    "resposta": 1,
+    "explicacao": "O limite atual do Lambda permite até 5 camadas por função.",
+    "referencias": []
+  },
+  {
+    "id": 129,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "No Amazon Kinesis Data Streams, qual das opções abaixo descreve corretamente o papel de um shard dentro do stream?",
+    "alternativas": [
+      "Um shard é banco de dados relacional",
+      "Um shard representa um grupo de consumidores que leem dados do Kinesis e processam eventos em tempo real.",
+      "Um shard representa um grupo de produtores que leem dados do Kinesis e processam eventos em tempo real.",
+      "Um shard é uma unidade escalável de capacidade de um stream, responsável por controlar a taxa de entrada e saída de dado."
+    ],
+    "resposta": 3,
+    "explicacao": "Um shard é a unidade de capacidade do stream, controlando a taxa de leitura e gravação de dados.",
+    "referencias": []
+  },
+  {
+    "id": 130,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Você percebeu que um shard do seu Kinesis Data Stream está sobrecarregado, causando latência na ingestão de dados. Qual das seguintes ações é a mais apropriada para resolver esse problema?",
+    "alternativas": [
+      "Executar um split, dividindo o shard em dois menores para aumentar a capacidade de ingestão.",
+      "Habilitar o AWS X-Ray para rastrear a latência e resolver automaticamente o problema.",
+      "Executar um merge, combinando o shard sobrecarregado com outro para equilibrar a carga.",
+      "Habilitar o AWS Lambda se tornar um shard."
+    ],
+    "resposta": 0,
+    "explicacao": "Dividir um shard sobrecarregado aumenta a capacidade total do stream e alivia a pressão de throughput.",
+    "referencias": []
+  },
+  {
+    "id": 131,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Você está desenvolvendo um aplicativo de streaming de vídeo ao vivo com alta concorrência global. É necessário reduzir a latência para usuários em diferentes locais. Qual das seguintes opções representa a melhor solução?",
+    "alternativas": [
+      "Colocar o serviço de streaming atrás de um Application Load Balancer",
+      "Usar AWS Global Accelerator para otimizar as rotas de rede",
+      "Criar buckets S3 regionais para replicar vídeos",
+      "Configurar um Auto Scaling Group global"
+    ],
+    "resposta": 1,
+    "explicacao": "O Global Accelerator otimiza rotas pela rede global da AWS, reduzindo latência para usuários distribuídos globalmente.",
+    "referencias": []
+  },
+  {
+    "id": 132,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "O Amazon Simple Queue Service (SQS) possui um conjunto de APIs para várias ações suportadas pelo serviço. Como developer associate, qual das seguintes opções você identificaria como correta em relação à API CreateQueue? (Selecione duas)",
+    "alternativas": [
+      "A fila de mensagens mortas de uma fila FIFO também deve ser uma fila FIFO. Já a fila de mensagens mortas de uma fila padrão pode ser uma fila padrão ou uma fila FIFO",
+      "O período de tempo, em segundos, durante o qual a entrega de todas as mensagens na fila é atrasada é configurado usando o atributo MessageRetention Period",
+      "O tempo limite de visibilidade para a fila é em segundos, com padrão de 30 segundos",
+      "As tags de fila não diferenciam maiúsculas de minúsculas. Uma nova tag com uma chave idêntica à de uma tag existente substitui a tag existente",
+      "Você não pode alterar o tipo de fila depois de criá-la"
+    ],
+    "resposta": [
+      2,
+      4
+    ],
+    "explicacao": "O VisibilityTimeout padrão é 30 segundos, e não é possível alterar o tipo de fila entre padrão e FIFO após a criação.",
+    "referencias": []
+  },
+  {
+    "id": 133,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Fácil",
+    "pergunta": "Você está desenvolvendo uma aplicação que precisa consumir mensagens de um tópico SNS e processá-las de forma assíncrona, garantindo que nenhuma mensagem seja perdida, mesmo que ocorra falha temporária na aplicação. Qual das seguintes abordagens é a melhor para implementar esse requisito?",
+    "alternativas": [
+      "Configurar o Amazon SNS para enviar mensagens diretamente a uma função AWS Lambda",
+      "Configurar o Amazon SNS para publicar mensagens diretamente em um tópico do Amazon EventBridge",
+      "Configurar o Amazon SNS para enviar mensagens a uma fila SQS, que será consumida pela aplicação",
+      "Configurar o Amazon SNS para enviar notificações por e-mail para que a aplicação as processe manualmente"
+    ],
+    "resposta": 2,
+    "explicacao": "Usar SNS para SQS desacopla os componentes e garante que mensagens fiquem duráveis na fila até serem processadas pela aplicação.",
+    "referencias": []
+  },
+  {
+    "id": 134,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa está processando dados de dispositivos IoT em tempo real usando Kinesis Data Streams via Kinesis Producer Library (KPL). Recentemente, o aplicativo parou de processar os dados devido ao erro ProvisionedThroughputExceeded. Quais ações você deve tomar para resolver esse problema? (Selecione duas)",
+    "alternativas": [
+      "Utilizar o RDS aprimorado para melhorar a leitura dos dados pelo consumidor.",
+      "Aumentar a quantidade de shards no Kinesis Data Stream para ampliar a capacidade de processamento.",
+      "Substituir o Kinesis Producer Library (KPL) pelo Agente do CloudWatch para enviar dados.",
+      "Configurar o produtor para implementar tentativas com backoff exponencial em caso de falhas.",
+      "Nenhuma das alternativas anteriores."
+    ],
+    "resposta": [
+      1,
+      3
+    ],
+    "explicacao": "O erro ocorre quando a capacidade do shard é excedida; a solução inclui aumentar shards e implementar retry com backoff exponencial no produtor.",
+    "referencias": []
+  },
+  {
+    "id": 135,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Fácil",
+    "pergunta": "Você está desenvolvendo uma aplicação que processa arquivos de imagens enviados pelos usuários para um bucket do Amazon S3. Sempre que um novo arquivo for enviado, ele deve ser automaticamente processado por uma função AWS Lambda. Qual configuração é necessária para implementar esse fluxo de forma eficiente?",
+    "alternativas": [
+      "Criar uma regra do Amazon EventBridge para acionar a função Lambda com eventos de PUT no bucket S3",
+      "Configurar uma política de bucket S3 que invoque diretamente a função Lambda após o upload",
+      "Configurar uma notificação de evento no bucket S3 para acionar a função Lambda sempre que ocorrer um evento de PUT",
+      "Utilizar AWS Step Functions para monitorar o bucket S3 e acionar a função Lambda"
+    ],
+    "resposta": 2,
+    "explicacao": "As notificações de evento do bucket S3 permitem acionar o Lambda diretamente sempre que objetos são criados no bucket.",
+    "referencias": []
+  },
+  {
+    "id": 136,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Você está desenvolvendo um aplicativo que grava logs de auditoria em um bucket S3. Para garantir que os logs não sejam alterados ou excluídos após a gravação, o cliente solicitou que o armazenamento seja imutável. Qual é a melhor solução para atender a esse requisito?",
+    "alternativas": [
+      "Configurar a replicação entre buckets S3 para evitar alterações no bucket de origem",
+      "Habilitar o recurso S3 Object Lock com uma política de retenção adequada",
+      "Configurar uma política de bucket S3 que bloqueie todas as ações de PUT e DELETE",
+      "Configurar o versionamento do bucket e excluir as permissões de DELETE para todos os usuários"
+    ],
+    "resposta": 1,
+    "explicacao": "O S3 Object Lock garante imutabilidade dos objetos com retenção WORM, impedindo alterações ou exclusões durante o período definido.",
+    "referencias": []
+  },
+  {
+    "id": 137,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Um desenvolvedor precisa garantir que funções Lambda sejam invocadas apenas a partir de serviços específicos da AWS, evitando invocações não autorizadas. Qual das seguintes abordagens é a mais apropriada para esse requisito?",
+    "alternativas": [
+      "Definir variáveis de ambiente na função Lambda para validar a origem da invocação",
+      "Configurar a política de função Lambda para permitir invocações apenas de serviços autorizados usando condições de SourceArn e SourceAccount",
+      "Configurar o CloudTrail para monitorar e bloquear invocações não autorizadas",
+      "Utilizar o AWS WAF para proteger a função Lambda contra invocações não autorizadas"
+    ],
+    "resposta": 1,
+    "explicacao": "Políticas baseadas em recursos para Lambda podem restringir invocações por serviço/conta usando condições como aws:SourceArn e aws:SourceAccount.",
+    "referencias": []
+  },
+  {
+    "id": 138,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa precisa permitir que usuários gerenciem seus próprios grupos de segurança para instâncias EC2, mas não quer conceder permissões de administrador. Qual é a melhor abordagem para isso?",
+    "alternativas": [
+      "Criar uma política IAM que permita ações EC2:AuthorizeSecurityGroupIngress limitadas aos seus próprios grupos",
+      "Conceder permissão EC2:ModifyInstanceAttribute",
+      "Conceder permissão IAM:PassRole",
+      "Criar um Lambda que gerencie as alterações e conceder acesso ao Lambda"
+    ],
+    "resposta": 0,
+    "explicacao": "Permissões granulares de IAM para ações EC2 específicas e recursos limitados aos próprios grupos fornecem o menor privilégio necessário.",
+    "referencias": []
+  },
+  {
+    "id": 139,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Fácil",
+    "pergunta": "Um desenvolvedor está utilizando AWS Secrets Manager para gerenciar credenciais de banco de dados. Qual das opções melhor descreve uma vantagem em relação ao AWS Systems Manager Parameter Store?",
+    "alternativas": [
+      "Secrets Manager permite rotação automática de segredos",
+      "Parameter Store suporta maior tamanho de segredo",
+      "Secrets Manager não gera custos adicionais",
+      "Parameter Store permite integração com CloudHSM"
+    ],
+    "resposta": 0,
+    "explicacao": "O Secrets Manager fornece rotação automática de segredos integrada, ao contrário do Parameter Store que exige lógica externa para rotação.",
+    "referencias": []
+  },
+  {
+    "id": 140,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Fácil",
+    "pergunta": "Seu aplicativo utiliza SNS para enviar notificações. O requisito é que apenas mensagens com um atributo específico sejam entregues a determinados assinantes. Como você implementa isso?",
+    "alternativas": [
+      "Usar Lambda para filtrar as mensagens antes de enviá-las ao SNS",
+      "Utilizar políticas de tópico SNS para controlar quem pode receber mensagens",
+      "Configurar filtros de assinatura no SNS com base em atributos de mensagem",
+      "Utilizar SQS para armazenar todas as mensagens e processá-las conforme necessário"
+    ],
+    "resposta": 2,
+    "explicacao": "Os filtros de assinatura do SNS permitem que assinantes recebam apenas mensagens que atendam a critérios baseados em atributos.",
+    "referencias": []
+  },
+  {
+    "id": 141,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Você precisa garantir que os objetos armazenados em um bucket S3 não possam ser excluídos ou sobrescritos por um período definido, nem mesmo por usuários com permissões administrativas. Qual modo do S3 Object Lock você deve usar para garantir essa proteção rígida?",
+    "alternativas": [
+      "Mode: Governance",
+      "Mode: Versioning",
+      "Mode: Compliance",
+      "Mode: Encryption"
+    ],
+    "resposta": 2,
+    "explicacao": "O modo Compliance do Object Lock impede qualquer alteração ou exclusão de objetos durante o período de retenção.",
+    "referencias": []
+  },
+  {
+    "id": 142,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa de comércio eletrônico gerencia uma aplicação de microsserviços que recebe pedidos de vários parceiros por meio de uma API personalizada para cada parceiro, exposta via Amazon API Gateway. Os pedidos são processados por uma função Lambda compartilhada. Como a empresa pode notificar cada parceiro sobre o status de seus respectivos pedidos da maneira mais eficiente possível, sem afetar os pedidos dos outros parceiros? Além disso, a solução deve ser escalável para acomodar novos parceiros com o mínimo de alterações no código necessárias.",
+    "alternativas": [
+      "Configure uma função Lambda separada para cada parceiro. Configure um tópico do SNS e inscreva cada parceiro nele. Modifique a função Lambda de cada parceiro para publicar mensagens com atributos específicos no tópico do SNS e aplique a política de filtro apropriada às assinaturas de tópico.",
+      "Configure um tópico do SNS e inscreva cada parceiro nele. Modifique a função Lambda para publicar mensagens com atributos específicos no tópico do SNS e aplique a política de filtro apropriada às inscrições no tópico.",
+      "Configure um tópico SNS separado para cada parceiro e inscreva cada parceiro no respectivo tópico SNS. Modifique a função Lambda para publicar mensagens com atributos específicos no tópico SNS do parceiro e aplique a política de filtro apropriada às assinaturas de tópicos.",
+      "Crie um tópico SNS separado para cada parceiro. Modifique a função Lambda para publicar mensagens para cada parceiro no tópico SNS do parceiro."
+    ],
+    "resposta": 1,
+    "explicacao": "Usar um único tópico SNS com assinaturas filtradas por atributos de mensagem simplifica a arquitetura e é mais escalável, evitando múltiplos tópicos ou funções Lambda adicionais.",
+    "referencias": []
+  },
+  {
+    "id": 143,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Você está planejando construir uma frota de instâncias EC2 otimizadas para EBS para lidar com a carga do seu novo aplicativo. Devido à conformidade de segurança, sua organização deseja que quaisquer strings secretas usadas no aplicativo sejam criptografadas para evitar a exposição de valores como texto simples. A solução exige que os eventos de descriptografia sejam auditados e que as chamadas de API sejam simples. Como isso pode ser alcançado? (Selecione duas)",
+    "alternativas": [
+      "Armazene o segredo como SecureString no SSM Parameter Store",
+      "Audite usando o CloudTrail",
+      "Criptografe primeiro com o KMS e depois armazene no SSM Parameter Store",
+      "Armazene o segredo como PlainText no SSM Parameter Store",
+      "Audite usando o SSM Audit Trail"
+    ],
+    "resposta": [
+      0,
+      1
+    ],
+    "explicacao": "SecureString no SSM Parameter Store integra KMS para criptografia automática, e o CloudTrail audita chamadas de API de descriptografia.",
+    "referencias": []
+  },
+  {
+    "id": 144,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa global de comércio eletrônico deseja realizar testes de carga geográficos de sua API de processamento de pedidos. A empresa deve implantar recursos em várias Regiões da AWS para suportar os testes de carga da API. Como a empresa pode atender a esses requisitos sem código de aplicativo adicional?",
+    "alternativas": [
+      "Configure um template do AWS CloudFormation que defina os recursos de teste de carga. Desenvolva funções Lambda específicas da região para criar uma stack a partir do template do AWS CloudFormation em cada Região quando a respectiva função for invocada.",
+      "Configure um AWS Cloud Development Kit (CDK) ToolKit que defina os recursos de teste de carga. Utilize o CDK CLI para criar uma stack a partir do template em cada Região.",
+      "Configure um template do AWS Organizations que defina os recursos de teste de carga em toda a organização. Utilize o comando create-stack-set do AWS CLI para criar um stack set nas Regiões desejadas.",
+      "Configure um template do AWS CloudFormation que defina os recursos de teste de carga. Utilize o comando create-stack-set do AWS CLI para criar um stack set nas Regiões desejadas."
+    ],
+    "resposta": 3,
+    "explicacao": "CloudFormation StackSets permitem criar e gerenciar stacks em múltiplas regiões a partir de um único modelo, sem necessidade de alterar o código do aplicativo.",
+    "referencias": []
+  },
+  {
+    "id": 145,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "A equipe de desenvolvimento de uma empresa de comércio eletrônico concluiu a última implantação do seu aplicativo com capacidade reduzida devido à política de implantação. O aplicativo sofreu uma queda de desempenho devido ao pico de tráfego causado por uma promoção em pavements. Qual das opções a seguir representa a melhor opção de implantação para a próxima versão do aplicativo, de modo que ela mantenha pelo menos a capacidade total do aplicativo e o impacto mínimo de uma implantação com falha?",
+    "alternativas": [
+      "Implantar a nova versão do aplicativo usando a política de implantação Rolling with additional batch",
+      "Implantar a nova versão do aplicativo usando a política de implantação All at once",
+      "Implantar a nova versão do aplicativo usando a política de implantação Rolling",
+      "Implantar a nova versão do aplicativo usando a política de implantação Immutable"
+    ],
+    "resposta": 3,
+    "explicacao": "A implantação Immutable cria um novo grupo de instâncias paralelo e mantém a capacidade total da versão existente até que a nova versão esteja pronta, minimizando o impacto de uma falha.",
+    "referencias": []
+  },
+  {
+    "id": 146,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Você está desenvolvendo uma aplicação que exige altos padrões de segurança e conformidade regulatória, e precisa de acesso exclusivo a um módulo de segurança de hardware (HSM) dedicado, gerenciado na nuvem para geração e armazenamento de chaves criptográficas. Qual serviço da AWS atende especificamente a esse requisito?",
+    "alternativas": [
+      "AWS KMS",
+      "AWS Secrets Manager",
+      "AWS Certificate Manager",
+      "AWS CloudHSM"
+    ],
+    "resposta": 3,
+    "explicacao": "O AWS CloudHSM fornece módulos de hardware dedicados em nuvem para atender a requisitos rigorosos de conformidade e armazenamento de chaves.",
+    "referencias": []
+  },
+  {
+    "id": 147,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Você tem um aplicativo web hospedado no EC2 que faz solicitações GET e PUT para objetos armazenados no Amazon Simple Storage Service (S3) usando o SDK para PHP. À medida que a equipe de segurança concluía a revisão final do seu aplicativo em busca de vulnerabilidades, eles perceberam que seu aplicativo usa chaves de acesso e chaves de acesso secretas do IAM codificadas para obter acesso aos serviços da AWS. Eles recomendam que você aproveite uma configuração mais segura, que deve usar credenciais temporárias, se possível. Qual das seguintes opções pode ser usada para lidar com o caso de uso fornecido?",
+    "alternativas": [
+      "Codifique as credenciais no código do aplicativo",
+      "Use uma IAM Instance Role",
+      "Use o SSM parameter store",
+      "Use variáveis de ambiente"
+    ],
+    "resposta": 1,
+    "explicacao": "Associar uma IAM Role à instância EC2 fornece credenciais temporárias gerenciadas automaticamente, eliminando a necessidade de credenciais estáticas codificadas.",
+    "referencias": []
+  },
+  {
+    "id": 148,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa de publicação de mídia está usando instâncias do Amazon EC2 para executar seus aplicativos críticos para os negócios. Sua equipe de TI está analisando a possibilidade de reservar capacidade, além dos planos de economia para as instâncias críticas. Como Desenvolvedor Associado, qual dos seguintes tipos de instância reservada você selecionaria para fornecer reservas de capacidade?",
+    "alternativas": [
+      "Instâncias Reservadas Regionais e Instâncias Reservadas Zonais",
+      "Instâncias reservadas zonais",
+      "Nem Instâncias Reservadas Regionais nem Instâncias Reservadas Zonais",
+      "Instâncias Reservadas Regionais"
+    ],
+    "resposta": 1,
+    "explicacao": "Instâncias Reservadas Zonais garantem reserva física de capacidade em uma Zona de Disponibilidade específica, ao contrário das regionais.",
+    "referencias": []
+  },
+  {
+    "id": 149,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Você é um desenvolvedor trabalhando em uma aplicação web escrita em Java e gostaria de usar o AWS Elastic Beanstalk para implantação... Agora, você gostaria de um mecanismo de configuração que aplicasse as configurações automaticamente para você. Qual das seguintes opções ajudaria a fazer isso?",
+    "alternativas": [
+      "Use um hook do AWS Lambda",
+      "Implantar um wrapper do CloudFormation",
+      "Use o armazenamento de parâmetros SSM como uma entrada para suas configurações do Elastic Beanstalk",
+      "Inclua arquivos de configuração em .ebextensions/ na raiz do seu código-fonte"
+    ],
+    "resposta": 3,
+    "explicacao": "O Elastic Beanstalk aplica automaticamente as configurações definidas em arquivos .ebextensions/ na raiz da aplicação durante o deploy.",
+    "referencias": []
+  },
+  {
+    "id": 150,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Fácil",
+    "pergunta": "Uma startup com uma conta AWS recém-criada está testando diferentes instâncias EC2 com sistema operacional Linux. Eles usaram uma instância de performance escalável - T2.micro - por 35 segundos e pararam a instância. No final do mês, qual é a duração de uso da instância pela qual a empresa é cobrada?",
+    "alternativas": [
+      "35 segundos",
+      "0 segundos",
+      "60 segundos",
+      "30 segundos"
+    ],
+    "resposta": 2,
+    "explicacao": "Instâncias EC2 Linux são cobradas por segundo, com um tempo mínimo faturável de 60 segundos por inicialização.",
+    "referencias": []
+  },
+  {
+    "id": 151,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Você foi designado como o novo líder de projeto para um aplicativo da web que processa pedidos de clientes. Você deseja integrar o processamento orientado a eventos sempre que os dados são modificados ou excluídos e usar uma abordagem sem servidor usando o AWS Lambda para processar eventos de stream. Qual dos seguintes bancos de dados você deve escolher?",
+    "alternativas": [
+      "DynamoDB",
+      "Kinesis",
+      "ElastiCache",
+      "RDS"
+    ],
+    "resposta": 0,
+    "explicacao": "DynamoDB Streams captura alterações no banco de dados e pode acionar funções Lambda para processamento orientado a eventos.",
+    "referencias": []
+  },
+  {
+    "id": 152,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Como Desenvolvedor Sênior, você é responsável por criar diversas APIs baseadas no API Gateway junto com sua equipe de desenvolvedores. Os desenvolvedores estão trabalhando na API no ambiente de desenvolvimento, mas percebem que as alterações feitas nas APIs não são refletidas quando a API é chamada. Como Desenvolvedor Associado, qual das seguintes soluções você recomendaria para este caso de uso?",
+    "alternativas": [
+      "Use variáveis de estágio para o estado de desenvolvimento da API",
+      "Habilitar o autorizador do Lambda para acessar a API",
+      "Reimplante a API em um estágio existente ou em um novo estágio",
+      "Os desenvolvedores precisam de permissões de IAM no componente de execução de API do API Gateway"
+    ],
+    "resposta": 2,
+    "explicacao": "Alterações no API Gateway só passam a valer em URLs públicas de execução após reimplantar a API em um estágio.",
+    "referencias": []
+  },
+  {
+    "id": 153,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Como arquiteto sênior... Um novo projeto exige uma taxa de transferência de 10 leituras fortemente consistentes por segundo, com 6 KB cada. Quantas unidades de capacidade de leitura você precisará ao configurar sua tabela do DynamoDB?",
+    "alternativas": [
+      "30",
+      "10",
+      "20",
+      "60"
+    ],
+    "resposta": 2,
+    "explicacao": "Leituras fortemente consistentes de 6 KB exigem 2 RCUs cada (arredondando para 8 KB). Para 10 leituras por segundo são necessárias 20 RCUs.",
+    "referencias": []
+  },
+  {
+    "id": 154,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa comprou uma instância reservada m4.xlarge, mas usou três instâncias m4.xlarge simultaneamente por uma hora. Como desenvolvedor, explique como as instâncias são cobradas?",
+    "alternativas": [
+      "Todas as instâncias são cobradas por uma hora de uso da Instância On-Demand",
+      "Uma instância é cobrada por uma hora de uso da Instância Reservada e as outras duas instâncias são cobradas por duas horas de uso sob demanda.",
+      "Uma instância é cobrada por uma hora de uso sob demanda e as outras duas instâncias são cobradas por duas horas de uso de instância reservada.",
+      "Todas as instâncias são cobradas por uma hora de uso da Instância Reservada"
+    ],
+    "resposta": 1,
+    "explicacao": "A instância reservada cobre apenas uma instância naquela hora; as outras duas são faturadas como sob demanda.",
+    "referencias": []
+  },
+  {
+    "id": 155,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Um desenvolvedor está projetando um template do AWS CloudFormation para implantar instâncias do Amazon EC2 em numerosas contas da AWS. O desenvolvedor precisa selecionar instâncias EC2 de uma lista de tipos de instância pré-aprovados. Que medidas o desenvolvedor poderia tomar para integrar a lista de tipos de instância autorizados ao template do CloudFormation?",
+    "alternativas": [
+      "Configure parâmetros separados para cada tipo de instância EC2 no template do CloudFormation",
+      "Configure um parâmetro com a lista de tipos de instância EC2 como AllowedValues no template do CloudFormation",
+      "Configure um parâmetro pseudo com a lista de tipos de instância EC2 como AllowedValues no template do CloudFormation",
+      "Configure um mapeamento contendo uma lista de tipos de instância EC2 como parâmetros no template do CloudFormation"
+    ],
+    "resposta": 1,
+    "explicacao": "AllowedValues em Parameters restringe os valores aceitos para um parâmetro a uma lista predefinida.",
+    "referencias": []
+  },
+  {
+    "id": 156,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Um Desenvolvedor em uma empresa está trabalhando em um template do CloudFormation... Qual seção de um template do CloudFormation não pode ser associada a uma Condition?",
+    "alternativas": [
+      "Outputs",
+      "Parameters",
+      "Conditions",
+      "Resources"
+    ],
+    "resposta": 1,
+    "explicacao": "A seção Parameters define entradas e não suporta o atributo Condition.",
+    "referencias": []
+  },
+  {
+    "id": 157,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa farmacêutica utiliza instâncias do Amazon EC2 para hospedagem de aplicações e o Amazon CloudFront para entrega de conteúdo. Um novo artigo de pesquisa com descobertas cruciais precisa ser compartilhado com uma equipe de pesquisa espalhada pelo mundo. Qual das seguintes opções representa a solução mais adequada para atender a esse requisito sem comprometer a segurança do conteúdo?",
+    "alternativas": [
+      "Use o recurso de cookies assinados do CloudFront para controlar o acesso ao arquivo",
+      "Usando a criptografia em nível de campo do CloudFront para ajudar a proteger dados confidenciais",
+      "Configurar o AWS Web Application Firewall (WAF) para monitorar e controlar as solicitações HTTP e HTTPS encaminhadas ao CloudFront",
+      "Use o recurso de URL assinado do CloudFront para controlar o acesso ao arquivo"
+    ],
+    "resposta": 3,
+    "explicacao": "URLs assinadas do CloudFront permitem acesso restrito e temporário a um arquivo específico para usuários autorizados.",
+    "referencias": []
+  },
+  {
+    "id": 158,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Fácil",
+    "pergunta": "Um desenvolvedor foi solicitado a criar uma aplicação web para ser implantada em instâncias EC2. O desenvolvedor quer apenas focar em escrever o código da aplicação sem se preocupar com provisionamento de servidor, configuração e implantação. Como Developer Associate, qual serviço da AWS você recomendaria para o caso de uso fornecido?",
+    "alternativas": [
+      "CloudFormation",
+      "Serverless Application Model",
+      "Elastic Beanstalk",
+      "CodeDeploy"
+    ],
+    "resposta": 2,
+    "explicacao": "O Elastic Beanstalk abstrai gerenciamento de infraestrutura para permitir que o desenvolvedor foque no código da aplicação.",
+    "referencias": []
+  },
+  {
+    "id": 159,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Você tem uma aplicação web de três camadas... A empresa está buscando reduzir o número de chamadas feitas ao endpoint e melhorar a latência da API. O que você pode fazer para melhorar o desempenho?",
+    "alternativas": [
+      "Use o Amazon Kinesis Data Streams para transmitir dados de entrada e reduzir a carga nas APIs do Gateway",
+      "Use Stage Variables",
+      "Use Mapping Templates",
+      "Habilite o API Gateway Caching"
+    ],
+    "resposta": 3,
+    "explicacao": "O cache do API Gateway armazena respostas e evita chamadas redundantes ao backend, melhorando a latência.",
+    "referencias": []
+  },
+  {
+    "id": 160,
+    "certificacao": "developer",
+    "dominio": "Fundamentos AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa criou um bucket do Amazon S3 que armazena dados de clientes. O líder da equipe acaba de habilitar o registro de acesso a esse bucket. O tamanho do bucket aumentou substancialmente após o início do registro de acesso. Como nenhum arquivo novo foi adicionado ao bucket, o líder da equipe, perplexo, busca uma resposta. Qual das seguintes razões explica esse comportamento?",
+    "alternativas": [
+      "A criptografia de objetos foi habilitada e cada objeto é armazenado duas vezes como parte desta configuração",
+      "Um ataque DDoS no seu bucket S3 pode potencialmente aumentar o tamanho dos dados no bucket se a segurança do bucket for comprometida durante o ataque",
+      "O registro de acesso S3 aponta para o mesmo bucket e é responsável pelo crescimento substancial do tamanho do bucket",
+      "Políticas de bucket errôneas para uploads em lote podem, às vezes, ser responsáveis pelo crescimento exponencial do tamanho do bucket S3"
+    ],
+    "resposta": 2,
+    "explicacao": "Se os logs de acesso S3 forem gravados no mesmo bucket monitorado, novos logs são adicionados continuamente, aumentando o tamanho do bucket.",
+    "referencias": []
+  },
+  {
+    "id": 161,
+    "certificacao": "developer",
+    "dominio": "Desenvolvimento com Serviços AWS",
+    "nivel": "Médio",
+    "pergunta": "Uma aplicação precisa processar um grande volume de dados de streaming em tempo real, como cliques de usuários em um site. Os dados devem ser duráveis e processados por múltiplas aplicações consumidoras de forma independente. Qual serviço AWS é o mais adequado para ingerir e distribuir esses dados de streaming?",
+    "alternativas": [
+      "Amazon SQS FIFO Queues",
+      "Amazon Kinesis Data Streams",
+      "Amazon SNS",
+      "AWS Step Functions"
+    ],
+    "resposta": 1,
+    "explicacao": "Kinesis Data Streams é projetado para ingestão de streaming durável e leitura por múltiplos consumidores independentes.",
+    "referencias": []
+  },
+  {
+    "id": 162,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Um Desenvolvedor foi encarregado de proteger certos buckets S3... Da última vez, uma política de bucket foi alterada, o bucket ficou erroneamente disponível para todos... Qual recurso/serviço ajudará o desenvolvedor a identificar problemas de segurança semelhantes com o mínimo esforço?",
+    "alternativas": [
+      "Recurso Access Advisor no console do IAM",
+      "S3 Analytics",
+      "IAM Access Analyzer",
+      "S3 Object Lock"
+    ],
+    "resposta": 2,
+    "explicacao": "IAM Access Analyzer avalia políticas de recursos e identifica recursos compartilhados publicamente ou fora da conta.",
+    "referencias": []
+  },
+  {
+    "id": 163,
+    "certificacao": "developer",
+    "dominio": "Implantação, CI/CD e Monitoramento",
+    "nivel": "Médio",
+    "pergunta": "Você está trabalhando em um projeto que tem mais de 100 dependências. Toda vez que seu AWS CodeBuild executa uma etapa de compilação, ele precisa resolver dependências Java de repositórios Ivy externos, o que leva muito tempo. Seu gerente quer acelerar esse processo no AWS CodeBuild. Qual das seguintes opções o ajudará a fazer isso com o mínimo esforço?",
+    "alternativas": [
+      "Armazene dependências em cache no S3",
+      "Reduza o número de dependências",
+      "Use o tipo de instância EC2 Instance Store para facilitar o cache de dependências internas",
+      "Envie todas as dependências como parte do código-fonte"
+    ],
+    "resposta": 0,
+    "explicacao": "O CodeBuild suporta cache em S3 para dependências e artefatos, acelerando builds subsequentes sem baixar tudo novamente.",
+    "referencias": []
+  },
+  {
+    "id": 164,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Recentemente, na sua organização, o SDK do AWS X-Ray foi integrado a cada função do Lambda para registrar chamadas de saída para fins de rastreamento. Quando o líder da sua equipe acessa o serviço X-Ray no Console de Gerenciamento da AWS para obter uma visão geral das informações coletadas, ele descobre que não há dados disponíveis. Qual é o motivo mais provável para esse problema?",
+    "alternativas": [
+      "Corrigir a role do IAM",
+      "Habilitar amostragem do X-Ray",
+      "Alterar as regras do security group",
+      "O X-Ray funciona apenas com aliases do AWS Lambda"
+    ],
+    "resposta": 0,
+    "explicacao": "A função Lambda precisa de permissões da role IAM para enviar dados ao X-Ray, como AWSXRayDaemonWriteAccess.",
+    "referencias": []
+  },
+  {
+    "id": 165,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Você é um desenvolvedor trabalhando em uma aplicação web escrita em .NET que usa o AWS SDK. Você precisa implementar um mecanismo de autenticação que retorne um JWT (JSON Web Token). Qual serviço da AWS o ajudará com o manuseio e gerenciamento de tokens?",
+    "alternativas": [
+      "Cognito User Pools",
+      "Cognito Identity Pools",
+      "Cognito Sync",
+      "API Gateway"
+    ],
+    "resposta": 0,
+    "explicacao": "Cognito User Pools gerencia diretório de usuários e emite tokens JWT após autenticação.",
+    "referencias": []
+  },
+  {
+    "id": 166,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa de cibersegurança deseja executar seus aplicativos em hardware de locatário único para atender às diretrizes de segurança. Qual das seguintes é a maneira mais econômica de isolar suas instâncias Amazon EC2 para um único locatário?",
+    "alternativas": [
+      "On-Demand Instances",
+      "Spot Instances",
+      "Dedicated Instances",
+      "Reserved Instances"
+    ],
+    "resposta": 2,
+    "explicacao": "Dedicated Instances rodam em hardware dedicado a um único cliente sem o custo extra de gerenciar host físico.",
+    "referencias": []
+  },
+  {
+    "id": 167,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Você é gerente de uma empresa de tecnologia... ao usar o AWS CLI para executar comandos, ele falha com a seguinte exceção: You are not authorized to perform this operation. Encoded authorization failure message: 6h34GtpmGjJJUm946eDVBfzWQJk6z5GePbbGDs9Z2T8xZj9EZtEduSnTbmrR7pMqpJrVYJCew2m8YBZQf4HRWEtrpncANrZMsnzk. Qual das seguintes ações ajudará os desenvolvedores a decodificar a mensagem?",
+    "alternativas": [
+      "Use KMS decode-authorization-message",
+      "AWS Cognito Decoder",
+      "AWS IAM decode-authorization-message",
+      "AWS STS decode-authorization-message"
+    ],
+    "resposta": 3,
+    "explicacao": "O comando aws sts decode-authorization-message é usado para decodificar mensagens de falha de autorização retornadas pela AWS.",
+    "referencias": []
+  },
+  {
+    "id": 168,
+    "certificacao": "developer",
+    "dominio": "Redes e VPC",
+    "nivel": "Médio",
+    "pergunta": "Durante a solução de problemas, um desenvolvedor percebeu que a instância do Amazon EC2 não consegue se conectar à Internet usando o Internet Gateway. Quais condições devem ser atendidas para que a conectividade com a Internet seja estabelecida? (Selecione duas)",
+    "alternativas": [
+      "As Network ACLs associadas à sub-rede devem ter regras para permitir tráfego de entrada e saída",
+      "A sub-rede foi configurada como pública e não tem acesso à Internet",
+      "A route table na sub-rede da instância deve ter uma rota para um Internet Gateway",
+      "A sub-rede da instância não está associada a nenhuma route table",
+      "A sub-rede da instância está associada a várias route tables com configurações conflitantes"
+    ],
+    "resposta": [
+      0,
+      2
+    ],
+    "explicacao": "A rota da sub-rede deve apontar para o Internet Gateway e as NACLs não devem bloquear tráfego de entrada/saída.",
+    "referencias": []
+  },
+  {
+    "id": 169,
+    "certificacao": "developer",
+    "dominio": "Segurança e Criptografia",
+    "nivel": "Médio",
+    "pergunta": "Uma empresa de cibersegurança deseja executar seus aplicativos em hardware dedicado a um único locatário para atender às diretrizes de segurança e precisa gerenciar licenças de software específicas vinculadas ao hardware. Qual das seguintes opções oferece um hardware exclusivo para um único locatário, permitindo também anexar licenças existentes ao host?",
+    "alternativas": [
+      "On-Demand Instances",
+      "Spot Instances",
+      "Dedicated Instances",
+      "Dedicated Hosts"
+    ],
+    "resposta": 3,
+    "explicacao": "Dedicated Hosts fornecem visibilidade e controle sobre o hardware físico e permitem anexar licenças BYOL.",
+    "referencias": []
+  },
+  {
+    "id": 170,
+    "certificacao": "developer",
+    "dominio": "Redes e VPC",
+    "nivel": "Médio",
+    "pergunta": "Sua aplicação está hospedada em duas regiões AWS diferentes e você quer usar o Route 53 para rotear o tráfego dos usuários para a região com menor latência automaticamente. Qual política de roteamento do Route 53 você deve usar?",
+    "alternativas": [
+      "Simple Routing",
+      "Failover Routing",
+      "Latency Routing",
+      "Geolocation Routing"
+    ],
+    "resposta": 2,
+    "explicacao": "Latency-based Routing direciona o tráfego para a região com menor latência de rede para o usuário.",
+    "referencias": []
+  },
+  {
+    "id": 171,
+    "certificacao": "developer",
+    "dominio": "Redes e VPC",
+    "nivel": "Médio",
+    "pergunta": "Você quer configurar uma política de roteamento no Route 53 que distribua o tráfego entre várias instâncias EC2 em diferentes regiões, com porcentagens específicas para cada uma. Qual política de roteamento deve usar?",
+    "alternativas": [
+      "Latency Routing",
+      "Weighted Routing",
+      "Failover Routing",
+      "Simple Routing"
+    ],
+    "resposta": 1,
+    "explicacao": "Weighted Routing permite definir pesos para distribuir frações do tráfego entre endpoints.",
+    "referencias": []
+  }
+]

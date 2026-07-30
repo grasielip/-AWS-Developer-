@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Exam Pro — Simulados & Preparatório DVA-C02</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/quiz.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/flashcards.css">
+</head>
+<body class="dark-theme">
+
+  <div class="app-container">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <i class="fa-brands fa-aws aws-logo"></i>
+        <span>AWS Exam <strong>Pro</strong></span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active" data-target="view-home">
+          <i class="fa-solid fa-house"></i> <span>Início</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-dashboard">
+          <i class="fa-solid fa-chart-pie"></i> <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-quiz-select">
+          <i class="fa-solid fa-pen-to-square"></i> <span>Simulados</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-flashcards">
+          <i class="fa-solid fa-layer-group"></i> <span>Flashcards</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-review">
+          <i class="fa-solid fa-rotate-left"></i> <span>Revisão Inteligente</span>
+        </a>
+      </nav>
+
+      <div class="user-level-card">
+        <div class="level-info">
+          <span id="user-level-badge">Nível 1</span>
+          <span id="user-xp-text">0 / 100 XP</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="xp-progress-fill" style="width: 0%"></div>
+        </div>
+        <div class="streak-badge">
+          <i class="fa-solid fa-fire"></i> <span id="user-streak-count">0</span> Dias Seguidos
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="theme-toggle" class="btn-icon">
+          <i class="fa-solid fa-moon"></i> <span>Modo Escuro</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <header class="top-header">
+        <button id="mobile-menu-btn" class="btn-icon mobile-only">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="global-search" placeholder="Pesquisar questões, serviços AWS ou conceitos...">
+        </div>
+
+        <div class="header-actions">
+          <div class="user-profile">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Estudante AWS</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="view-home" class="app-view active">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <h1>Domine as Certificações AWS</h1>
+            <p>Simulados práticos, explicações detalhadas, flashcards e revisão espaçada baseada em métricas reais.</p>
+            <button class="btn btn-primary" id="btn-quick-start">
+              <i class="fa-solid fa-play"></i> Começar Simulado Rápido
+            </button>
+          </div>
+          <div class="hero-graphic">
+            <i class="fa-brands fa-aws"></i>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fa-solid fa-list-check"></i></div>
+            <div class="stat-details">
+              <h3 id="stat-total-answered">0</h3>
+              <p>Questões Respondidas</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="stat-details">
+              <h3 id="stat-accuracy">0%</h3>
+              <p>Precisão Geral</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange"><i class="fa-solid fa-award"></i></div>
+            <div class="stat-details">
+              <h3 id="stat-badges-count">0/5</h3>
+              <p>Conquistas Liberadas</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-title">Certificações Disponíveis</h2>
+        <div class="cert-grid">
+          <div class="cert-card" data-cert="developer">
+            <div class="cert-badge associate">Associate</div>
+            <h3>AWS Certified Developer</h3>
+            <p>Código: DVA-C02. Foco em Serverless, CI/CD, DynamoDB, Segurança e SDKs.</p>
+            <div class="cert-footer">
+              <span class="q-count"><i class="fa-solid fa-database"></i> <span id="dev-questions-count">0</span> Questões</span>
+              <button class="btn btn-outline">Iniciar</button>
+            </div>
+          </div>
+          <div class="cert-card disabled">
+            <div class="cert-badge foundational">Foundational</div>
+            <h3>AWS Cloud Practitioner</h3>
+            <p>Código: CLF-C02. Conceitos fundamentais de nuvem, segurança e billing.</p>
+            <div class="cert-footer">
+              <span class="q-count">Em breve</span>
+            </div>
+          </div>
+          <div class="cert-card disabled">
+            <div class="cert-badge associate">Associate</div>
+            <h3>AWS Solutions Architect</h3>
+            <p>Código: SAA-C03. Arquiteturas resilientes, de alta performance e custo otimizado.</p>
+            <div class="cert-footer">
+              <span class="q-count">Em breve</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-dashboard" class="app-view">
+        <h2 class="section-title">Dashboard de Desempenho</h2>
+        
+        <div class="dashboard-grid">
+          <div class="dash-card chart-container">
+            <h3>Evolução de Precisão (%)</h3>
+            <canvas id="chart-accuracy-history"></canvas>
+          </div>
+          <div class="dash-card chart-container">
+            <h3>Desempenho por Domínio</h3>
+            <canvas id="chart-domain-performance"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-quiz-select" class="app-view">
+        <h2 class="section-title">Configurar Simulado</h2>
+        <div class="quiz-config-card">
+          <form id="quiz-config-form">
+            <div class="form-group">
+              <label>Modo de Estudo:</label>
+              <select id="config-mode" class="form-control">
+                <option value="exam">Modo Simulado (Resposta e tempo ao final)</option>
+                <option value="study" selected>Modo Estudo (Feedback e explicação imediata)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Filtrar por Nível:</label>
+              <select id="config-level" class="form-control">
+                <option value="all">Todos</option>
+                <option value="practitioner">Practitioner</option>
+                <option value="associate">Associate</option>
+                <option value="professional">Professional</option>
+                <option value="specialty">Specialty</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Filtrar por certificação AWS:</label>
+              <select id="config-certification" class="form-control">
+                <option value="all">Todas</option>
+                <option value="cloud-practitioner">AWS Certified Cloud Practitioner (CLF-C02)</option>
+                <option value="ai-practitioner">AWS Certified AI Practitioner (AIF-C01)</option>
+                <option value="architect-associate">AWS Certified Solutions Architect – Associate (SAA-C03)</option>
+                <option value="developer-associate">AWS Certified Developer – Associate (DVA-C02)</option>
+                <option value="sysops-associate">AWS Certified SysOps Administrator – Associate (SOA-C02)</option>
+                <option value="data-engineer-associate">AWS Certified Data Engineer – Associate (DEA-C01)</option>
+                <option value="ml-engineer-associate">AWS Certified Machine Learning Engineer – Associate (MLA-C01)</option>
+                <option value="architect-professional">AWS Certified Solutions Architect – Professional (SAP-C02)</option>
+                <option value="devops-professional">AWS Certified DevOps Engineer – Professional (DOP-C02)</option>
+                <option value="security-specialty">AWS Certified Security – Specialty (SCS-C02)</option>
+                <option value="advanced-networking-specialty">AWS Certified Advanced Networking – Specialty (ANS-C01)</option>
+                <option value="machine-learning-specialty">AWS Certified Machine Learning – Specialty (MLS-C01)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Filtrar por Domínio:</label>
+              <select id="config-domain" class="form-control">
+                <option value="all">Todos</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Filtrar por Dificuldade:</label>
+              <select id="config-difficulty" class="form-control">
+                <option value="all">Todas</option>
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Difícil">Difícil</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Filtrar por Serviço AWS:</label>
+              <select id="config-service" class="form-control">
+                <option value="all">Todos</option>
+                <option value="IAM">IAM</option>
+                <option value="EC2">EC2</option>
+                <option value="S3">S3</option>
+                <option value="Lambda">Lambda</option>
+                <option value="API Gateway">API Gateway</option>
+                <option value="DynamoDB">DynamoDB</option>
+                <option value="RDS">RDS</option>
+                <option value="VPC">VPC</option>
+                <option value="SNS">SNS</option>
+                <option value="SQS">SQS</option>
+                <option value="EventBridge">EventBridge</option>
+                <option value="CloudFormation">CloudFormation</option>
+                <option value="CloudFront">CloudFront</option>
+                <option value="Route 53">Route 53</option>
+                <option value="ECS">ECS</option>
+                <option value="EKS">EKS</option>
+                <option value="Fargate">Fargate</option>
+                <option value="Elastic Beanstalk">Elastic Beanstalk</option>
+                <option value="Cognito">Cognito</option>
+                <option value="Secrets Manager">Secrets Manager</option>
+                <option value="KMS">KMS</option>
+                <option value="CloudWatch">CloudWatch</option>
+                <option value="CloudTrail">CloudTrail</option>
+                <option value="Step Functions">Step Functions</option>
+                <option value="CodeCommit">CodeCommit</option>
+                <option value="CodeBuild">CodeBuild</option>
+                <option value="CodeDeploy">CodeDeploy</option>
+                <option value="CodePipeline">CodePipeline</option>
+                <option value="X-Ray">X-Ray</option>
+                <option value="ElastiCache">ElastiCache</option>
+                <option value="EFS">EFS</option>
+                <option value="EBS">EBS</option>
+                <option value="AWS Backup">AWS Backup</option>
+                <option value="Organizations">Organizations</option>
+                <option value="Config">Config</option>
+                <option value="GuardDuty">GuardDuty</option>
+                <option value="Inspector">Inspector</option>
+                <option value="WAF">WAF</option>
+                <option value="Shield">Shield</option>
+                <option value="Athena">Athena</option>
+                <option value="Glue">Glue</option>
+                <option value="Redshift">Redshift</option>
+                <option value="EMR">EMR</option>
+                <option value="OpenSearch">OpenSearch</option>
+                <option value="Bedrock">Bedrock</option>
+                <option value="SageMaker">SageMaker</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Filtrar por Status:</label>
+              <select id="config-status" class="form-control">
+                <option value="all">Todas</option>
+                <option value="not-answered">Não respondidas</option>
+                <option value="answered">Respondidas</option>
+                <option value="correct">Corretas</option>
+                <option value="incorrect">Incorretas</option>
+                <option value="flagged">Marcadas para revisão</option>
+                <option value="favorite">Favoritas</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Quantidade de Questões:</label>
+              <select id="config-count" class="form-control">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="65">65</option>
+                <option value="all">Todas</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-solid fa-rocket"></i> Iniciar Simulado
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="view-quiz-active" class="app-view">
+        <div class="quiz-header">
+          <div class="quiz-timer">
+            <i class="fa-regular fa-clock"></i> <span id="timer-display">00:00</span>
+          </div>
+          <div class="quiz-progress-text">
+            Questão <span id="current-q-index">0</span> de <span id="total-q-count">0</span>
+          </div>
+          <div class="quiz-flagged-count">
+            Marcadas: <span id="flagged-questions-count">0</span>
+          </div>
+          <button id="btn-favorite-q" class="btn-icon">
+            <i class="fa-regular fa-bookmark"></i>
+          </button>
+        </div>
+
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="quiz-progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-meta">
+            <span class="badge domain-badge" id="q-domain">Domínio</span>
+            <span class="badge level-badge" id="q-level">Nível</span>
+          </div>
+          <h3 id="question-text" class="question-text">Carregando pergunta...</h3>
+          <p id="question-help" class="question-help-text">Selecione a alternativa correta.</p>
+
+          <div id="options-container" class="options-container">
+            </div>
+
+          <div id="explanation-box" class="explanation-box hidden">
+            <div id="explanation-status" class="explanation-status"></div>
+            <h4>Explicação Detalhada:</h4>
+            <p id="explanation-content"></p>
+            <div class="ref-links" id="explanation-refs"></div>
+          </div>
+        </div>
+
+        <div class="quiz-actions">
+          <button id="btn-prev-q" class="btn btn-outline" disabled>Anterior</button>
+          <button id="btnReview" class="btn btn-warning"><i class="fa-solid fa-flag"></i> Marcar p/ Revisão</button>
+          <button id="btn-open-review" class="btn btn-secondary"><i class="fa-solid fa-book-open"></i> Revisão</button>
+          <button id="btn-next-q" class="btn btn-primary">Próxima</button>
+          <button id="btn-finish-quiz" class="btn btn-success hidden">Finalizar Simulado</button>
+        </div>
+      </section>
+
+      <section id="view-flashcards" class="app-view">
+        <h2 class="section-title">Flashcards AWS</h2>
+        <p class="section-desc">Clique no card para virar e testar seu conhecimento rápido.</p>
+
+        <div class="flashcard-filters">
+          <div class="filter-group">
+            <label for="fc-filter-level">Nível</label>
+            <select id="fc-filter-level" class="form-control">
+              <option value="all">Todos</option>
+              <option value="practitioner">Practitioner</option>
+              <option value="associate">Associate</option>
+              <option value="professional">Professional</option>
+              <option value="specialty">Specialty</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="fc-filter-certification">Certificação</label>
+            <select id="fc-filter-certification" class="form-control">
+              <option value="all">Todas</option>
+              <option value="cloud-practitioner">AWS Certified Cloud Practitioner (CLF-C02)</option>
+              <option value="ai-practitioner">AWS Certified AI Practitioner (AIF-C01)</option>
+              <option value="architect-associate">AWS Certified Solutions Architect – Associate (SAA-C03)</option>
+              <option value="developer-associate">AWS Certified Developer – Associate (DVA-C02)</option>
+              <option value="sysops-associate">AWS Certified SysOps Administrator – Associate (SOA-C02)</option>
+              <option value="data-engineer-associate">AWS Certified Data Engineer – Associate (DEA-C01)</option>
+              <option value="ml-engineer-associate">AWS Certified Machine Learning Engineer – Associate (MLA-C01)</option>
+              <option value="architect-professional">AWS Certified Solutions Architect – Professional (SAP-C02)</option>
+              <option value="devops-professional">AWS Certified DevOps Engineer – Professional (DOP-C02)</option>
+              <option value="security-specialty">AWS Certified Security – Specialty (SCS-C02)</option>
+              <option value="advanced-networking-specialty">AWS Certified Advanced Networking – Specialty (ANS-C01)</option>
+              <option value="machine-learning-specialty">AWS Certified Machine Learning – Specialty (MLS-C01)</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="fc-filter-domain">Domínio</label>
+            <select id="fc-filter-domain" class="form-control">
+              <option value="all">Todos</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="fc-filter-difficulty">Dificuldade</label>
+            <select id="fc-filter-difficulty" class="form-control">
+              <option value="all">Todas</option>
+              <option value="Fácil">Fácil</option>
+              <option value="Médio">Médio</option>
+              <option value="Difícil">Difícil</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="fc-filter-service">Serviço AWS</label>
+            <select id="fc-filter-service" class="form-control">
+              <option value="all">Todos</option>
+              <option value="IAM">IAM</option>
+              <option value="EC2">EC2</option>
+              <option value="S3">S3</option>
+              <option value="Lambda">Lambda</option>
+              <option value="API Gateway">API Gateway</option>
+              <option value="DynamoDB">DynamoDB</option>
+              <option value="RDS">RDS</option>
+              <option value="VPC">VPC</option>
+              <option value="SNS">SNS</option>
+              <option value="SQS">SQS</option>
+              <option value="EventBridge">EventBridge</option>
+              <option value="CloudFormation">CloudFormation</option>
+              <option value="CloudFront">CloudFront</option>
+              <option value="Route 53">Route 53</option>
+              <option value="ECS">ECS</option>
+              <option value="EKS">EKS</option>
+              <option value="Fargate">Fargate</option>
+              <option value="Elastic Beanstalk">Elastic Beanstalk</option>
+              <option value="Cognito">Cognito</option>
+              <option value="Secrets Manager">Secrets Manager</option>
+              <option value="KMS">KMS</option>
+              <option value="CloudWatch">CloudWatch</option>
+              <option value="CloudTrail">CloudTrail</option>
+              <option value="Step Functions">Step Functions</option>
+              <option value="CodeCommit">CodeCommit</option>
+              <option value="CodeBuild">CodeBuild</option>
+              <option value="CodeDeploy">CodeDeploy</option>
+              <option value="CodePipeline">CodePipeline</option>
+              <option value="X-Ray">X-Ray</option>
+              <option value="ElastiCache">ElastiCache</option>
+              <option value="EFS">EFS</option>
+              <option value="EBS">EBS</option>
+              <option value="AWS Backup">AWS Backup</option>
+              <option value="Organizations">Organizations</option>
+              <option value="Config">Config</option>
+              <option value="GuardDuty">GuardDuty</option>
+              <option value="Inspector">Inspector</option>
+              <option value="WAF">WAF</option>
+              <option value="Shield">Shield</option>
+              <option value="Athena">Athena</option>
+              <option value="Glue">Glue</option>
+              <option value="Redshift">Redshift</option>
+              <option value="EMR">EMR</option>
+              <option value="OpenSearch">OpenSearch</option>
+              <option value="Bedrock">Bedrock</option>
+              <option value="SageMaker">SageMaker</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flashcard-wrapper">
+          <div class="flashcard" id="flashcard-element">
+            <div class="flashcard-front">
+              <span class="badge" id="fc-domain">Domínio</span>
+              <p id="fc-front-text">Carregando pergunta do flashcard...</p>
+            </div>
+            <div class="flashcard-back">
+              <h4>Resposta & Explicação:</h4>
+              <p id="fc-back-text">Explicação no verso...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard-controls">
+          <button id="btn-fc-prev" class="btn btn-outline">Anterior</button>
+          <button id="btn-fc-next" class="btn btn-outline">Próximo</button>
+        </div>
+      </section>
+
+      <section id="view-review" class="app-view">
+        <h2 class="section-title">Revisão Inteligente de Erros</h2>
+        <p class="section-desc">Reveja as questões que você errou ou marcou para revisão nos simulados anteriores.</p>
+        <div id="review-list-container" class="review-list">
+          </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/database.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/flashcards.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
